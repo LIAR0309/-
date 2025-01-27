@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勤怠管理システム</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f4f6;
+    }
+    .min-h-screen {
+      min-height: 100vh;
+    }
+    .bg-gray-100 {
+      background-color: #f3f4f6;
+    }
+    .bg-white {
+      background-color: #ffffff;
+    }
+    .text-gray-800 {
+      color: #1f2937;
+    }
+    .text-gray-600 {
+      color: #4b5563;
+    }
+    .text-gray-500 {
+      color: #6b7280;
+    }
+    .font-bold {
+      font-weight: bold;
+    }
+    .font-noto {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .rounded {
+      border-radius: 0.375rem;
+    }
+    .rounded-lg {
+      border-radius: 0.5rem;
+    }
+    .shadow-md {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .hover\:bg-gray-100:hover {
+      background-color: #f3f4f6;
+    }
+    .hover\:bg-green-600:hover {
+      background-color: #16a34a;
+    }
+    .hover\:bg-red-600:hover {
+      background-color: #dc2626;
+    }
+    .hover\:bg-blue-500:hover {
+      background-color: #2563eb;
+    }
+    .text-white {
+      color: #ffffff;
+    }
+    .bg-green-500 {
+      background-color: #22c55e;
+    }
+    .bg-red-500 {
+      background-color: #ef4444;
+    }
+    .bg-blue-500 {
+      background-color: #3b82f6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .p-4 {
+      padding: 1rem;
+    }
+    .p-6 {
+      padding: 1.5rem;
+    }
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .space-y-2 > :not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+    .space-x-4 > :not(:last-child) {
+      margin-right: 1rem;
+    }
+    .flex {
+      display: flex;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .grid {
+      display: grid;
+    }
+    .gap-4 {
+      grid-gap: 1rem;
+    }
+    .border {
+      border: 1px solid #d1d5db;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function MainComponent() {
+      const [activeTab, setActiveTab] = useState("attendance");
+      const [employees, setEmployees] = useState([
+        { id: 1, name: "田中 太郎", status: "未出勤" },
+        { id: 2, name: "鈴木 花子", status: "未出勤" },
+        { id: 3, name: "佐藤 一郎", status: "未出勤" },
+        { id: 4, name: "山田 美咲", status: "未出勤" },
+        { id: 5, name: "伊藤 健一", status: "未出勤" },
+      ]);
+
+      const [currentTime, setCurrentTime] = useState(new Date());
+      const [attendanceLogs, setAttendanceLogs] = useState([]);
+
+      useEffect(() => {
+        const timer = setInterval(() => {
+          setCurrentTime(new Date());
+        }, 1000);
+        return () => clearInterval(timer);
+      }, []);
+
+      const handleClockIn = (employeeId) => {
+        const updatedEmployees = employees.map((employee) =>
+          employee.id === employeeId
+            ? { ...employee, status: "出勤中" }
+            : employee
+        );
+        setEmployees(updatedEmployees);
+
+        setAttendanceLogs((prevLogs) => [
+          ...prevLogs,
+          {
+            employeeId,
+            type: "出勤",
+            timestamp: new Date().toLocaleString("ja-JP"),
+          },
+        ]);
+      };
+
+      const handleClockOut = (employeeId) => {
+        const updatedEmployees = employees.map((employee) =>
+          employee.id === employeeId
+            ? { ...employee, status: "退勤済み" }
+            : employee
+        );
+        setEmployees(updatedEmployees);
+
+        setAttendanceLogs((prevLogs) => [
+          ...prevLogs,
+          {
+            employeeId,
+            type: "退勤",
+            timestamp: new Date().toLocaleString("ja-JP"),
+          },
+        ]);
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-100">
+          <header className="bg-white shadow-md">
+            <div className="container mx-auto px-4">
+              <div className="flex justify-between items-center h-16">
+                <h1 className="text-2xl font-bold text-gray-800 font-noto">
+                  勤怠管理システム
+                </h1>
+                <nav className="flex space-x-4">
+                  <button
+                    onClick={() => setActiveTab("attendance")}
+                    className={`px-4 py-2 rounded font-noto ${
+                      activeTab === "attendance"
+                        ? "bg-blue-500 text-white"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    勤怠
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("logs")}
+                    className={`px-4 py-2 rounded font-noto ${
+                      activeTab === "logs"
+                        ? "bg-blue-500 text-white"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    ログ
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </header>
+
+          <main className="container mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto">
+              {activeTab === "attendance" ? (
+                <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+                  <h2 className="text-xl font-bold mb-4 font-noto text-center">
+                    現在時刻: {currentTime.toLocaleString("ja-JP")}
+                  </h2>
+
+                  <div className="grid gap-4">
+                    {employees.map((employee) => (
+                      <div
+                        key={employee.id}
+                        className="border p-4 rounded-lg flex items-center justify-between bg-gray-50"
+                      >
+                        <div className="font-noto">
+                          <span className="font-bold">{employee.name}</span>
+                          <span className="ml-4 text-gray-600">
+                            状態: {employee.status}
+                          </span>
+                        </div>
+                        <div className="space-x-4">
+                          <button
+                            onClick={() => handleClockIn(employee.id)}
+                            className="bg-green-500 text-white px-4 py-2 rounded font-noto hover:bg-green-600"
+                            disabled={employee.status !== "未出勤"}
+                          >
+                            出勤
+                          </button>
+                          <button
+                            onClick={() => handleClockOut(employee.id)}
+                            className="bg-red-500 text-white px-4 py-2 rounded font-noto hover:bg-red-600"
+                            disabled={employee.status !== "出勤中"}
+                          >
+                            退勤
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h2 className="text-xl font-bold mb-4 font-noto text-center">
+                    勤怠ログ
+                  </h2>
+                  <div className="space-y-2">
+                    {attendanceLogs.length > 0 ? (
+                      attendanceLogs.map((log, index) => {
+                        const employee = employees.find(
+                          (emp) => emp.id === log.employeeId
+                        );
+                        return (
+                          <div
+                            key={index}
+                            className="text-gray-600 font-noto text-center"
+                          >
+                            {log.timestamp} - {employee?.name} が{log.type}しました
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div className="text-gray-500 text-center font-noto">
+                        ログはまだありません
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </main>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<MainComponent />, document.getElementById("root"));
+  </script>
+</body>
+</html>
