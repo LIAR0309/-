@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>所属ライバー紹介 - Chime lab（キメラボ）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <!-- ✅ 共通ヘッダーを読み込む -->
+  <div id="header"></div>
+
+  <main class="section">
+    <div class="container">
+      <section class="livers">
+        <h2>所属ライバー紹介</h2>
+        <p class="intro-text">個性豊かで魅力的なChimelab所属ライバーたちをご紹介します。</p>
+        
+        <div class="liver-grid">
+          <!-- ライバー1 -->
+          <div class="liver-card" 
+               data-img="assets/img/ito_momoiro1.png" 
+               data-name="百彩 イト" 
+               data-desc="百の彩を持つウサギのキメラ。"
+               data-link="liver-ito.html">
+            <img src="assets/img/ito_momoiro1.png" alt="百彩 イト">
+            <h3>百彩 イト</h3>
+            <p>百の彩を持つウサギのキメラ。</p>
+          </div>
+
+          <!-- ライバー2 -->
+          <div class="liver-card"
+               data-img="assets/img/Bibi_sesera1.png"
+               data-name="星々来 びび"
+               data-desc="星を愛するイッカククジラのキメラ。"
+               data-link="liver-bibi.html">
+            <img src="assets/img/Bibi_sesera1.png" alt="星々来 びび">
+            <h3>星々来 びび</h3>
+            <p>星を愛するイッカククジラのキメラ。</p>
+          </div>
+
+          <!-- ライバー3 -->
+          <div class="liver-card"
+               data-img="assets/img/noel_music1.png"
+               data-name="ノエル・ミュージック"
+               data-desc="美しい白鳥のキメラ。"
+               data-link="liver-noel.html">
+            <img src="assets/img/noel_music1.png" alt="ノエル・ミュージック">
+            <h3>ノエル・ミュージック</h3>
+            <p>美しい白鳥のキメラ。</p>
+          </div>
+
+          <!-- ライバー4 -->
+          <div class="liver-card"
+               data-img="assets/img/Secret.png"
+               data-name="SECRET"
+               data-desc="COMING SOON...">
+            <img src="assets/img/Secret.png" alt="SECRET">
+            <h3>SECRET</h3>
+            <p>COMING SOON...</p>
+          </div>
+
+          <!-- ライバー5 -->
+          <div class="liver-card"
+               data-img="assets/img/Secret.png"
+               data-name="SECRET"
+               data-desc="COMING SOON...">
+            <img src="assets/img/Secret.png" alt="SECRET">
+            <h3>SECRET</h3>
+            <p>COMING SOON...</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ✅ JS追加 -->
+  <script>
+    document.querySelectorAll('.liver-card').forEach(card => {
+      const link = card.getAttribute('data-link');
+      if (link) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+          window.location.href = link;
+        });
+      }
+    });
+  </script>
+</body>
+
+
+  <!-- ✅ フッター -->
+  <footer class="footer">
+    <div class="logo">Chime lab</div>
+    <div class="footer-bottom">© 2025 Chime lab All Rights Reserved.</div>
+  </footer>
+
+  <!-- ✅ モーダル本体 -->
+  <div id="liverModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h3 id="modalName"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- ✅ JavaScript -->
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => {
+
+      // ヘッダー読み込み
+      document.getElementById("header").innerHTML = data;
+
+      // ★ ここが重要 ★
+      // 読み込んだ後にハンバーガーのJSを実行する
+      const menuToggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("nav");
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+          menuToggle.classList.toggle("active");
+          nav.classList.toggle("active");
+        });
+      }
+
+      // 現在ページをハイライト
+      const current = location.pathname.split("/").pop();
+      document.querySelectorAll('.nav a').forEach(link => {
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active-nav');
+        }
+      });
+    })
+    .catch(err => console.error("ヘッダー読み込みエラー:", err));
+</script>
+

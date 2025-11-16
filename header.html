@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chimelab</title>
+  <style>
+    /* ====== 基本レイアウト ====== */
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+
+    .header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* ====== PCナビゲーション ====== */
+    .nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover,
+    .active-nav {
+      color: #0078ff;
+    }
+
+    /* ====== ハンバーガーメニュー ====== */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background: #333;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* ====== モバイル表示 ====== */
+    @media (max-width: 768px) {
+      .nav {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: white;
+        border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        display: none;
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .nav.active {
+        display: flex;
+      }
+
+      .nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: right;
+        padding-right: 20px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* ====== ハンバーガーアニメ ====== */
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-content">
+    <div class="logo">Chimelab</div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="index.html" class="active-nav">ホーム</a></li>
+        <li><a href="content.html">研究中ライバー</a></li>
+        <li><a href="soul.html">研究記録</a></li>
+        <li><a href="support.html">サポート体制</a></li>
+        <li><a href="apply.html">応募フォーム</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // ハンバーガーメニュー開閉
+  const menuToggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>
