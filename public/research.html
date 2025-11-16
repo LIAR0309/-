@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chime lab（キメラボ）- IRIAM Vライバー事務所</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+  <h1>ライバーの最新情報！</h1>
+  <div class="twitter-comment"style="
+  display: grid;
+    align-content: stretch;
+    justify-content: center;">
+  <p>キメラボ公式X！現在新規ライバー募集中！ぜひ応募フォームからお気軽にお問い合わせください。</p>
+  </div>
+  <div class="tweet-container" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+        <blockquote class="twitter-tweet" data-lang="ja">
+      <p lang="ja" dir="ltr">□□タレントの固定ツイート内容...</p>
+      &mdash; Chimelab  ｷﾒﾗﾎﾞ【公式】魂募集中！ (@chimelab_)
+      <a href="https://twitter.com/chimelab_/status/1972954454195573093">2025年9月30日</a>
+    </blockquote>
+    <!-- ほかのタレント例 -->
+     
+    <blockquote class="twitter-tweet" data-lang="ja">
+      <p lang="ja" dir="ltr">#Chimelab✨第1期生✨百彩イト降臨</p>
+      &mdash; 百彩 イト (@ito_momoiro)
+      <a href="https://twitter.com/ito_momoiro/status/1962386432368226489">2025年9月1日</a>
+    </blockquote>
+
+      <!-- Bibi_Sesera -->
+    <blockquote class="twitter-tweet" data-lang="ja">
+      <p lang="ja" dir="ltr">星々来びび体調不良にて！...</p>
+      &mdash; ✨️星々来 びび🍡 (@Bibi_Sesera)
+      <a href="https://twitter.com/Bibi_Sesera/status/1974888230291194277">2025年10月5日</a>
+    </blockquote>
+
+    <blockquote class="twitter-tweet" data-lang="ja">
+      <p lang="ja" dir="ltr">#Chimelab✨第1期生✨宝石ボイスのハーピィ🦢ノエル・ミュージックです𓆩♡𓆪</p>
+      &mdash; ノエル・ミュージック🦢💎🦋IRIAM準備中 (@noel_chimelab)
+      <a href="https://twitter.com/noel_chimelab/status/1975036544928108583">2025年10月6日</a>
+    </blockquote>
+
+
+  </div>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
+
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => {
+
+      // ヘッダー読み込み
+      document.getElementById("header").innerHTML = data;
+
+      // ★ ここが重要 ★
+      // 読み込んだ後にハンバーガーのJSを実行する
+      const menuToggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("nav");
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+          menuToggle.classList.toggle("active");
+          nav.classList.toggle("active");
+        });
+      }
+
+      // 現在ページをハイライト
+      const current = location.pathname.split("/").pop();
+      document.querySelectorAll('.nav a').forEach(link => {
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active-nav');
+        }
+      });
+    })
+    .catch(err => console.error("ヘッダー読み込みエラー:", err));
+</script>
