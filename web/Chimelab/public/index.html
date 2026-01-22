@@ -301,10 +301,6 @@
 
     <!-- ========== JavaScript ========== -->
     <script>
-        // サイバーパンクモードの適用
-        if (sessionStorage.getItem('cyberpunk_mode') === 'true') {
-            document.body.classList.add('cyberpunk-mode');
-        }
         // ハンバーガーメニュー
         const menuToggle = document.getElementById("menu-toggle");
         const nav = document.getElementById("nav");
@@ -358,7 +354,7 @@
                 footerLogoClickCount++;
                 clearTimeout(footerLogoClickTimer);
                 if (footerLogoClickCount === 3) {
-                    window.location.href = '/login';
+                    window.location.href = '/admin';
                     footerLogoClickCount = 0;
                 } else {
                     footerLogoClickTimer = setTimeout(() => {

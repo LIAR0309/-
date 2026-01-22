@@ -12,11 +12,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "login.html"));
+  res.sendFile(path.join(__dirname, "admin.html"));
 });
 
 app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "admin.html"));
+});
+
+app.get("/secret", (req, res) => {
+  res.sendFile(path.join(__dirname, "secret.html"));
 });
 
 // サーバー起動
