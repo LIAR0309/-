@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chime lab（キメラボ）- 応募フォーム</title>
+  
+  <!-- ================================
+       スタイルシート
+  ================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #f7f8fa;
+      margin: 0;
+      color: #222;
+    }
+
+    main {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    #message {
+      display: none;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    a {
+      color: #333333;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #999;
+      background: #fff;
+    }
+  </style>
+
+  <!-- ================================
+       ページ遷移スクリプト
+  ================================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSdB0clUdTaix4sp4EuvFc8rsJu20uftT0auPhXNphUF03ljwA/viewform";
+      const go = confirm("Googleフォームへ移動します。よろしいですか？");
+
+      if (go) {
+        window.location.href = formURL;
+      } else {
+        document.getElementById("message").style.display = "block";
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <!-- ✅ 共通ヘッダー -->
+  <div id="header"></div>
+
+  <!-- ================================
+       メインコンテンツ
+  ================================= -->
+  <main class="main-content">
+    <p id="message">
+      Googleフォームへの移動をキャンセルしました。<br>
+      応募する場合は、以下のリンクからアクセスしてください。<br><br>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdB0clUdTaix4sp4EuvFc8rsJu20uftT0auPhXNphUF03ljwA/viewform" 
+         target="_blank" rel="noopener noreferrer">
+        ▶ 応募フォームを開く
+      </a>
+    </p>
+
+    <noscript>
+      <p style="font-size: 1rem; color: #666;">
+        JavaScriptが無効になっています。自動的に応募フォームへ移動できません。<br>
+        以下のリンクをクリックして移動してください。<br><br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdB0clUdTaix4sp4EuvFc8rsJu20uftT0auPhXNphUF03ljwA/viewform" 
+           target="_blank" rel="noopener noreferrer">
+          ▶ 応募フォームを開く
+        </a>
+      </p>
+    </noscript>
+  </main>
+
+  <!-- ================================
+       フッター
+  ================================= -->
+  <footer class="footer">
+    &copy; 2025 Chime lab（キメラボ）
+  </footer>
+
+  <!-- ✅ 共通ヘッダー読込スクリプト -->
+ <script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => {
+
+      // ヘッダー読み込み
+      document.getElementById("header").innerHTML = data;
+
+      // ★ ここが重要 ★
+      // 読み込んだ後にハンバーガーのJSを実行する
+      const menuToggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("nav");
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+          menuToggle.classList.toggle("active");
+          nav.classList.toggle("active");
+        });
+      }
+
+      // 現在ページをハイライト
+      const current = location.pathname.split("/").pop();
+      document.querySelectorAll('.nav a').forEach(link => {
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active-nav');
+        }
+      });
+    })
+    .catch(err => console.error("ヘッダー読み込みエラー:", err));
+</script>
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chime lab（キメラボ）- ライバー最新ポスト</title>
+  <meta name="description" content="Chime lab所属ライバーたちの最新SNS投稿をチェック！">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- 共通CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+  <!-- ✅ 共通ヘッダー -->
+  <div id="header"></div>
+
+  <main class="section">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 48px;">Chimelab ライバーの最新ポスト</h2>
+
+      <!-- ✅ Elfsightは1回だけ読み込み -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+
+      <div class="tweet-section">
+        <div class="tweet-box">
+          <h2>星々来 びび</h2>
+          <div class="tweet-scroll">
+            <div class="elfsight-app-d3a4fe6a-e6e0-4320-8f95-dcf65565e736" data-elfsight-app-lazy></div>
+          </div>
+        </div>
+
+        <div class="tweet-box">
+          <h2>百彩 イト</h2>
+          <div class="tweet-scroll">
+            <div class="elfsight-app-5fb69bdb-a1aa-43b7-8abf-f76f3bf9a9e7" data-elfsight-app-lazy></div>
+          </div>
+        </div>
+
+        <div class="tweet-box">
+          <h2>ノエル・ミュージック</h2>
+          <div class="tweet-scroll">
+            <div class="elfsight-app-9f856816-f433-4466-b087-6c732c47c839" data-elfsight-app-lazy></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="logo">Chime lab</div>
+      <div class="footer-bottom">
+        &copy; 2025 Chime lab（キメラボ）
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ 共通ヘッダー読込スクリプト -->
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+
+        // ヘッダー読み込み
+        document.getElementById("header").innerHTML = data;
+
+        // ハンバーガーメニュー
+        const menuToggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        if (menuToggle && nav) {
+          menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            nav.classList.toggle("active");
+          });
+        }
+
+        // 現在ページをハイライト
+        const current = location.pathname.split("/").pop();
+        document.querySelectorAll('.nav a').forEach(link => {
+          if (link.getAttribute('href') === current) {
+            link.classList.add('active-nav');
+          }
+        });
+      })
+      .catch(err => console.error("ヘッダー読み込みエラー:", err));
+  </script>
+</body>
+
+</html>

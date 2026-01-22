@@ -1,0 +1,114 @@
+/* ============================
+   Chimelab FUTURE MODE
+============================ */
+
+body {
+  background: radial-gradient(circle at top, #050b0b, #000);
+  color: #cffff7;
+  letter-spacing: 0.03em;
+}
+
+/* 全体フェードイン */
+main {
+  animation: chimelabFade 1.2s ease-out forwards;
+}
+
+@keyframes chimelabFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 見出し発光 */
+h1, h2, h3 {
+  text-shadow: 0 0 10px rgba(0, 255, 230, 0.35);
+}
+
+/* セクションを研究パネル化 */
+.section {
+  background: rgba(0, 30, 30, 0.45);
+  border: 1px solid rgba(0, 255, 230, 0.25);
+  box-shadow: 0 0 30px rgba(0, 255, 230, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+/* ヒーロー：起動画面風 */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(circle at center, rgba(0,255,230,0.15), transparent 70%),
+    linear-gradient(to bottom, #000, #020808);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.035),
+    rgba(255,255,255,0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+/* ボタンを端末UI風に */
+.button {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,255,230,0.25);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s;
+}
+
+.button:hover::after {
+  transform: translateX(120%);
+}
+
+/* キメラ・特徴カードをホログラム化 */
+.feature-card,
+.recruiting-item {
+  background: rgba(0, 20, 20, 0.6);
+  border: 1px solid rgba(0, 255, 230, 0.3);
+  box-shadow: 0 0 18px rgba(0, 255, 230, 0.18);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover,
+.recruiting-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(0, 255, 230, 0.4);
+}
+
+/* 文字を研究ログ寄りに */
+p, li {
+  font-family: "Noto Sans JP", "Courier New", monospace;
+  line-height: 1.9;
+  opacity: 0.95;
+}
+
+/* フッターも端末化 */
+.footer {
+  background: rgba(0, 10, 10, 0.9);
+  border-top: 1px solid rgba(0, 255, 230, 0.25);
+}
