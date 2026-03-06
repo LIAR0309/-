@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS / ニュース一覧 - Chimelab（キメラボ）</title>
+    <meta name="description" content="Chimelab（キメラボ）の最新ニュース・お知らせ一覧ページです。新メンバー情報やイベント情報をお届けします。">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <!-- ========== ヘッダー ========== -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ChimeLab</span>
+                <img src="img/chimelab-logo.jpg" alt="Chimelab Logo" class="logo-img">
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html#about">キメラボとは</a></li>
+                    <li><a href="index.html#livers">所属ライバー</a></li>
+                    <li><a href="news.html" class="active-nav">ニュース</a></li>
+                    <li><a href="index.html#support">サポート</a></li>
+                    <li><a href="index.html#apply">応募する</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========== ニュース一覧 ========== -->
+        <section class="section news-page-section">
+            <div class="container">
+                <h1 class="news-page-title"><i class="fas fa-newspaper"></i> NEWS / ニュース一覧</h1>
+                <p class="section-desc">研究所からの最新のお知らせやイベント情報</p>
+
+                <!-- フィルター -->
+                <div class="news-filter" id="news-filter">
+                    <button class="news-filter-btn active" data-filter="all">すべて</button>
+                    <button class="news-filter-btn" data-filter="debut">新メンバー</button>
+                    <button class="news-filter-btn" data-filter="event">イベント</button>
+                    <button class="news-filter-btn" data-filter="info">お知らせ</button>
+                </div>
+
+                <!-- ニュース一覧 -->
+                <div class="news-page-list" id="news-page-list">
+
+                    <!-- 2026年3月 -->
+                    <div class="news-month-group">
+                        <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2026年3月</h2>
+
+                        <article class="news-page-item" data-category="debut">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.20</time>
+                                <span class="news-tag news-tag-debut">新メンバー</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    新メンバー「白鼬れむ」がChimelabに所属！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    新たなキメラが研究所に加わります。オコジョのキメラ「白鼬れむ」のデビュー配信は3月20日12時より！お楽しみに！</p>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="info">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.10</time>
+                                <span class="news-tag news-tag-info">お知らせ</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    Chimelabのホームページが公開されました！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    Chimelab（キメラボ）の公式ホームページが正式にオープンしました。所属ライバー情報やサポート内容をぜひご覧ください。</p>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.03</time>
+                                <span class="news-tag news-tag-event">Live2Dイベント</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    星々来びび・ノエルミュージックがLive2Dイベント達成！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    星々来びびとノエル・ミュージックがLive2Dイベントを無事達成しました。応援いただいた皆様、ありがとうございました！</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2025年 -->
+                    <div class="news-month-group">
+                        <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2025年</h2>
+
+                        <article class="news-page-item" data-category="debut">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2025.06</time>
+                                <span class="news-tag news-tag-debut">新メンバー</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    Chimelab（キメラボ）設立！初期メンバー活動開始
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    IRIAMで活動するVライバー事務所「Chimelab（キメラボ）」が設立されました。個性豊かなキメラたちの活動にご期待ください。</p>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+
+                <!-- トップに戻る -->
+                <div class="news-page-back">
+                    <a href="index.html" class="button button-secondary button-sm"><i class="fas fa-arrow-left"></i>
+                        トップページへ戻る</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">Chimelab</div>
+            <div class="footer-bottom">
+                &copy; 2025-2026 Chimelab（キメラボ）
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JavaScript ========== -->
+    <script>
+        // ハンバーガーメニュー
+        const menuToggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            nav.classList.toggle("active");
+        });
+
+        // ナビリンククリックでメニューを閉じる
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove("active");
+                nav.classList.remove("active");
+            });
+        });
+
+        // === ニュースフィルター機能 ===
+        const filterBtns = document.querySelectorAll('.news-filter-btn');
+        const newsItems = document.querySelectorAll('.news-page-item');
+        const monthGroups = document.querySelectorAll('.news-month-group');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // アクティブクラス切替
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+
+                // 各ニュースアイテムの表示/非表示
+                newsItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                        item.classList.remove('news-item-hidden');
+                        item.classList.add('news-item-visible');
+                    } else {
+                        item.classList.remove('news-item-visible');
+                        item.classList.add('news-item-hidden');
+                        setTimeout(() => {
+                            if (item.classList.contains('news-item-hidden')) {
+                                item.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                });
+
+                // 月グループの表示/非表示（中のアイテムが全て非表示なら隠す）
+                setTimeout(() => {
+                    monthGroups.forEach(group => {
+                        const visibleItems = group.querySelectorAll('.news-page-item:not([style*="display: none"])');
+                        group.style.display = visibleItems.length === 0 ? 'none' : '';
+                    });
+                }, 350);
+            });
+        });
+
+        // スクロール時のヘッダー変化
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

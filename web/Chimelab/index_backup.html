@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chimelab（キメラボ）- IRIAM Vライバー事務所</title>
+    <meta name="description" content="あなたの魅力の研究所「Chimelab（キメラボ）」は、IRIAMで活動するVライバー事務所です。未経験歓迎、充実サポートで新しい自分を見つけよう。">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <meta name="google-site-verification" content="7jSCRylg7jg-HsqSyhu9xbNjSfs2R9Qez7wxUREVrRk" />
+</head>
+
+<body>
+
+    <!-- ========== ヘッダー ========== -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="#top" class="logo">
+                <span class="logo-text">ChimeLab</span>
+                <img src="img/chimelab-logo.jpg" alt="Chimelab Logo" class="logo-img">
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="#about">キメラボとは</a></li>
+                    <li><a href="#livers">所属ライバー</a></li>
+                    <li><a href="#support">サポート体制</a></li>
+                    <li><a href="#apply">応募する</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========== ヒーロー ========== -->
+        <section class="hero" id="top">
+            <div class="hero-content">
+                <div class="floating">
+                    <h1>「何者かになりたい」<br>そんな欲望、叶えてみませんか？</h1>
+                    <p>あなたの魅力の研究所「Chimelab（キメラボ）」で<br class="sp-only">新しい自分を見つけよう</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="#livers" class="button button-primary"><i class="fas fa-users"></i> ライバーを見る</a>
+                    <a href="#apply" class="button button-secondary"><i class="fas fa-paper-plane"></i> 応募する</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 所属ライバー ========== -->
+        <section class="section livers-section" id="livers">
+            <div class="container">
+                <h2>所属ライバー紹介</h2>
+                <p class="section-desc">個性豊かで魅力的なChimelab所属ライバーたち</p>
+
+                <!-- ポップアップ表示エリア -->
+                <div id="liver-popup-area" style="display: none; margin-top: 40px;">
+                    <div class="liver-popup-wrapper">
+                        <button class="liver-popup-close" id="liver-popup-close" aria-label="閉じる">
+                            <i class="fas fa-times"></i>
+                        </button>
+
+                        <button class="liver-popup-nav liver-popup-prev" id="liver-popup-prev" aria-label="前のメンバーへ">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="liver-popup-nav liver-popup-next" id="liver-popup-next" aria-label="次のメンバーへ">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <!-- 百彩 イト -->
+                        <article class="liver-detail-card liver-popup-card" id="liver-ito">
+                            <div class="liver-header">
+                                <img src="img/ito_momoiro1.png" alt="百彩 イト">
+                                <div>
+                                    <h2>百彩 イト</h2>
+                                    <p class="kana">momoiro ito</p>
+                                    <p class="tagline">🐇 百の彩を持つウサギのキメラ</p>
+                                </div>
+                            </div>
+                            <div class="liver-body">
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-user"></i> プロフィール</div>
+                                    <ul>
+                                        <li><strong>身長</strong> うさぎ時40cm / 人間時160cm</li>
+                                        <li><strong>誕生日</strong> 1月8日</li>
+                                        <li><strong>一人称</strong> 僕・私</li>
+                                    </ul>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-heart"></i> 性格・好み</div>
+                                    <p>気分屋のメンヘラ。警戒心が強く、慣れるまでに時間がかかる。繊細で優しい一面も。<br>
+                                        💯好き：読書、ゲーム、ボードゲーム、占い、音ゲー<br>
+                                        🎀苦手：一方通行</p>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-tags"></i> タグ</div>
+                                    <div class="tags-list">
+                                        <span class="tag">FN：ぽまいら</span>
+                                        <span class="tag">FM：🩷🎀🐇💯</span>
+                                        <span class="tag">FA：#イト絵日記</span>
+                                    </div>
+                                    <div class="liver-links">
+                                        <a href="https://x.com/ito_momoiro" target="_blank" class="liver-link"><i
+                                                class="fab fa-twitter"></i> X</a>
+                                        <a href="https://www.twitch.tv/ito_momoiro" target="_blank"
+                                            class="liver-link"><i class="fab fa-twitch"></i> Twitch</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 星々来 びび -->
+                        <article class="liver-detail-card liver-popup-card" id="liver-bibi">
+                            <div class="liver-header">
+                                <img src="img/Bibi_sesera1.png" alt="星々来 びび">
+                                <div>
+                                    <h2>星々来 びび</h2>
+                                    <p class="kana">sesera bibi</p>
+                                    <p class="tagline">✨️星を愛するイッカククジラのキメラ</p>
+                                </div>
+                            </div>
+                            <div class="liver-body">
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-user"></i> プロフィール</div>
+                                    <ul>
+                                        <li><strong>身長</strong> 149.8cm</li>
+                                        <li><strong>誕生日</strong> 4月22日（人間の体を得た日）</li>
+                                        <li><strong>特徴</strong> 額のツノ（牙）、寒さに強い</li>
+                                    </ul>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-heart"></i> 性格・好み</div>
+                                    <p>基本はかまちょ気質。気まぐれな一面もあるが、仲良くなるとかなり陽気。<br>
+                                        🍡好き：星座、酒、甘いもの、チョコミント、寝ること、書道、にじさんじ<br>
+                                        🍡苦手：ゲーム（飽き性）、パソコン（機械音痴）</p>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-tags"></i> タグ</div>
+                                    <div class="tags-list">
+                                        <span class="tag">FN：びびっこ</span>
+                                        <span class="tag">FM：✨🍡</span>
+                                        <span class="tag">FA：#びびっとカラー</span>
+                                    </div>
+                                </div>
+                                <div class="liver-links">
+                                    <a href="https://x.com/Bibi_Sesera_" target="_blank" class="liver-link"><i
+                                            class="fab fa-twitter"></i> X</a>
+                                    <a href="https://x.gd/1iRqm" target="_blank" class="liver-link"><i
+                                            class="fas fa-broadcast-tower"></i> IRIAM</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- ノエル・ミュージック -->
+                        <article class="liver-detail-card liver-popup-card" id="liver-noel">
+                            <div class="liver-header">
+                                <img src="img/noel_musick1.png" alt="ノエル・ミュージック">
+                                <div>
+                                    <h2>ノエル・ミュージック</h2>
+                                    <p class="kana">Noel Musick</p>
+                                    <p class="tagline">🦢 宝石の様に澄んだ歌声の白鳥キメラ</p>
+                                </div>
+                            </div>
+                            <div class="liver-body">
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-user"></i> プロフィール</div>
+                                    <ul>
+                                        <li><strong>身長</strong> 160cm</li>
+                                        <li><strong>誕生日</strong> 10月4日</li>
+                                        <li><strong>特徴</strong> 左右で異なる色の瞳（青と黄）</li>
+                                    </ul>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-heart"></i> 性格・好み</div>
+                                    <p>好き嫌いがはっきりした性格。常に考え続けることが好き。座右の銘は「迷ったら挑戦」。<br>
+                                        💎好き：歌うこと、言葉遊び、相談にのること、誰かのために頑張ること<br>
+                                        💎苦手：虫、数字、約束を守らない人</p>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-tags"></i> タグ</div>
+                                    <div class="tags-list">
+                                        <span class="tag">FN：水面隊</span>
+                                        <span class="tag">FM：🦢💎🦋</span>
+                                        <span class="tag">FA：#のえみゅ幻想譜</span>
+                                    </div>
+                                </div>
+                                <div class="liver-links">
+                                    <a href="https://x.com/noel_chimelab" target="_blank" class="liver-link"><i
+                                            class="fab fa-twitter"></i> X</a>
+                                    <a href="https://web.iriam.app/s/user/BsCofAn9tz?uuid=2bb0de1e" target="_blank"
+                                        class="liver-link"><i class="fas fa-broadcast-tower"></i> IRIAM</a>
+                                    <a href="https://youtube.com/@noel_musick?si=ekczoG-2rpD4nXvh" target="_blank"
+                                        class="liver-link"><i class="fab fa-youtube"></i> YouTube</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 鮭延 ヤヲ -->
+                        <article class="liver-detail-card liver-popup-card" id="liver-yawo">
+                            <div class="liver-header">
+                                <img src="img/sanobe_yawo1.png" alt="鮭延 ヤヲ">
+                                <div>
+                                    <h2>鮭延 ヤヲ</h2>
+                                    <p class="kana">sanobe yao</p>
+                                    <p class="tagline">🍣200年生きた現役漫画家の猫又</p>
+                                </div>
+                            </div>
+                            <div class="liver-body">
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-user"></i> プロフィール</div>
+                                    <ul>
+                                        <li><strong>身長</strong> 173cm</li>
+                                        <li><strong>誕生日</strong> 12月28日</li>
+                                        <li><strong>特徴</strong> 二又の尻尾、鮭のアイマスク</li>
+                                    </ul>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-heart"></i> 性格・好み</div>
+                                    <p>めんどくさがりや、自由奔放。アウトドア社不。座右の銘は「他力本願」。<br>
+                                        🍣好き：寝る事、ゲーム（FPS・RPG）、Vtuber<br>
+                                        🍣苦手：食事（めんどくさい、咀嚼が疲れる）</p>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-tags"></i> タグ</div>
+                                    <div class="tags-list">
+                                        <span class="tag">FN：監視員</span>
+                                        <span class="tag">FM:✒️🍣🐈‍⬛</span>
+                                        <span class="tag">FA：#ヤヲの一コマ</span>
+                                    </div>
+                                </div>
+                                <div class="liver-links">
+                                    <a href="https://x.com/sanobe_yao" target="_blank" class="liver-link"><i
+                                            class="fab fa-twitter"></i> X</a>
+                                    <a href="https://web.iriam.app/s/user/WjbLniO5X5?uuid=52f26a4d" target="_blank"
+                                        class="liver-link"><i class="fas fa-broadcast-tower"></i> IRIAM</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 白鼬 レム -->
+                        <article class="liver-detail-card liver-popup-card" id="liver-rem">
+                            <div class="liver-header">
+                                <img src="img/rem-hakuita1.png" alt="白鼬 レム">
+                                <div>
+                                    <h2>白鼬 レム</h2>
+                                    <p class="kana">hakuita rem</p>
+                                    <p class="tagline">迷子のオコジョ</p>
+                                </div>
+                            </div>
+                            <div class="liver-body">
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-user"></i> プロフィール</div>
+                                    <ul>
+                                        <li><strong>身長</strong> 185cm</li>
+                                        <li><strong>誕生日</strong> 5月24日</li>
+                                        <li><strong>特徴</strong>大きなしっぽ、リボン</li>
+                                    </ul>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-heart"></i> 性格・好み</div>
+                                    <p>座右の銘：住成すものは心なりけり<br>
+                                        好きな事：料理、お酒、動物<br>
+                                        苦手な事：えび、甘いもの</p>
+                                </div>
+                                <div class="liver-section">
+                                    <div class="liver-section-title"><i class="fas fa-tags"></i> タグ</div>
+                                    <div class="tags-list">
+                                        <span class="tag">FN：はくい隊</span>
+                                        <span class="tag">FM:❄️🧚🍸</span>
+                                        <span class="tag">FA：♯はくいたーと</span>
+                                    </div>
+                                </div>
+                                <div class="liver-links">
+                                    <a href="https://x.com/hakuita_rem?s=21" target="_blank" class="liver-link"><i
+                                            class="fab fa-twitter"></i> X</a>
+                                    <a href="https://web.iriam.app/s/user/tktHjmAzsM?uuid=71995c84" target="_blank"
+                                        class="liver-link"><i class="fas fa-broadcast-tower"></i> IRIAM</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="liver-grid">
+                    <a href="#liver-ito" class="liver-card">
+                        <img src="img/ito_momoiro1.png" alt="百彩 イト">
+                        <div class="liver-info">
+                            <h3>百彩 イト</h3>
+                            <p>百の彩を持つウサギのキメラ。</p>
+                        </div>
+                    </a>
+                    <a href="#liver-bibi" class="liver-card">
+                        <img src="img/Bibi_sesera1.png" alt="星々来 びび">
+                        <div class="liver-info">
+                            <h3>星々来 びび</h3>
+                            <p>星を愛するイッカククジラのキメラ。</p>
+                        </div>
+                    </a>
+                    <a href="#liver-noel" class="liver-card">
+                        <img src="img/noel_musick1.png" alt="ノエル・ミュージック">
+                        <div class="liver-info">
+                            <h3>ノエル・ミュージック</h3>
+                            <p>美しい白鳥のキメラ。</p>
+                        </div>
+                    </a>
+                    <a href="#liver-yawo" class="liver-card">
+                        <img src="img/sanobe_yawo1.png" alt="鮭延 ヤヲ">
+                        <div class="liver-info">
+                            <h3>鮭延 ヤヲ</h3>
+                            <p>200年生きた漫画家の猫又</p>
+                        </div>
+                    </a>
+                    <a href="#liver-rem" class="liver-card">
+                        <img src="img/rem-hakuita1.png" alt="白鼬 レム">
+                        <div class="liver-info">
+                            <h3>白鼬 レム</h3>
+                            <p>迷子のオコジョのキメラ。</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== キメラボとは ========== -->
+        <section class="section about" id="about">
+            <div class="container">
+                <h2>Chimelab（キメラボ）とは？</h2>
+                <div class="about-box">
+                    <h3><i class="fas fa-flask"></i> Concept</h3>
+                    <p>所属ライバーは皆なにかの「キメラ」。ふつうの人間ではありません。<br>
+                        魔物から獣人、天使や悪魔など…ここにはたくさんのキメラが収容されています。<br>
+                        そんなキメラ達を観察・研究している施設です。自由気ままに研究所で生活するキメラ達の日常を配信という形でお届けします。</p>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-user-tie"></i>
+                            <span><strong>運営</strong><br>LAB:RAT (イラストレーター・Live2Dモデラー)</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span><strong>設立</strong><br>2025年6月</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-bolt"></i>
+                            <span><strong>主な配信プラットフォーム</strong><br>IRIAM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 特徴 ========== -->
+        <section class="section features-section" id="features">
+            <div class="container">
+                <h2>キメラボの特徴</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>クリエイター運営</h3>
+                        <p>イラストレーター・Live2Dモデラーが運営。技術的なサポートも万全。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>充実サポート</h3>
+                        <p>初心者でも安心のノウハウ・サポート体制を完備。</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-star"></i>
+                        <h3>未経験歓迎</h3>
+                        <p>心を燃やせるあなたを全力でサポート。配信未経験でも大歓迎！</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-discord"></i>
+                        <h3>連絡の早急な対応</h3>
+                        <p>連絡方法にDiscordを採用。早急に対応します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ========== サポート体制 ========== -->
+        <section class="section support-section" id="support">
+            <div class="container">
+                <h2>サポート体制</h2>
+                <p class="section-desc">あなたの魅力、個性を研究し輝ける場所を目指しています</p>
+
+                <div class="support-cards">
+                    <!-- サポート内容 -->
+                    <div class="support-card">
+                        <div class="card-header"><i class="fas fa-gift"></i> 特典</div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> あなただけの配信立ち絵プレゼント！（条件あり）</li>
+                            <li><i class="fas fa-check"></i> 収益化審査免除（IRIAMのみ）</li>
+                            <li><i class="fas fa-check"></i> ランクボーナスあり（詳細は下記に記載）</li>
+                            <li>
+                                <i class="fas fa-check"></i> ライバー限定割引あり<br>
+                                <small style="margin-left: 1.5em;">※LAB:RATへの依頼の割引があります。</small>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ランク報酬 -->
+                    <div class="support-card">
+                        <div class="card-header"><i class="fas fa-trophy"></i> IRIAMランク報酬</div>
+                        <ul>
+                            <li><strong>Aランク到達</strong>：一枚絵</li>
+                            <li><strong>Sランク到達</strong>：Live2D動くイラスト</li>
+                            <li><strong>イベント条件達成</strong>：IRIAM用Live2Dモデル</li>
+                        </ul>
+                    </div>
+
+                    <!-- 報酬 -->
+                    <div class="support-card">
+                        <div class="card-header"><i class="fas fa-coins"></i> 報酬</div>
+                        <p>IRIAMのみ</p>
+                        <p>ギフト報酬 & 時給ダイヤ</p>
+                        <p>※事務所ではなくIRIAM側の相対評価なので前後します。</p>
+                        <p>各ランクに応じた時給ダイヤを支給</p>
+                        <p>1ダイヤ＝1円</p>
+
+                    </div>
+
+                    <!-- 配信ノルマ -->
+                    <div class="support-card">
+                        <div class="card-header"><i class="fas fa-clock"></i> 配信ノルマ</div>
+                        <p><strong>初月のみノルマあり</strong></p>
+                        <p>初配信から<strong>30日以内</strong>に：</p>
+                        <ul>
+                            <li>50時間以上配信（1日4時間まで）</li>
+                            <li>C5ランク到達</li>
+                        </ul>
+                        <p><strong>ノルマ達成で</strong>立ち絵無償＆ミニキャライラストプレゼント！</p>
+                    </div>
+                </div>
+
+                <!-- 所属までの流れ -->
+                <div class="flow-section">
+                    <h3><i class="fas fa-route"></i> 所属までの流れ</h3>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-num">1</div>
+                            <p>応募フォームから応募</p>
+                        </div>
+                        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+                        <div class="flow-step">
+                            <div class="step-num">2</div>
+                            <p>Discordで音声面談</p>
+                        </div>
+                        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+                        <div class="flow-step">
+                            <div class="step-num">3</div>
+                            <p>採用決定・契約</p>
+                        </div>
+                        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+                        <div class="flow-step">
+                            <div class="step-num">4</div>
+                            <p>立ち絵制作・配信準備期間へ</p>
+                        </div>
+                        <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+                        <div class="flow-step">
+                            <div class="step-num">5</div>
+                            <p>IRIAM配信デビュー！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 応募 ========== -->
+        <section class="section apply-section" id="apply">
+            <div class="container">
+                <h2>応募について
+                </h2>
+                <p class="section-desc">お試し応募も大歓迎です！</p>
+
+                <div class="apply-box">
+                    <p><i class="fas fa-heart"></i> 歌が好き、人と話すのが好き、配信をしてみたい…<br>
+                        どれか一つでも当てはまる方、生まれ変わってみませんか？</p>
+
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdB0clUdTaix4sp4EuvFc8rsJu20uftT0auPhXNphUF03ljwA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="button button-primary button-large">
+                        <i class="fas fa-external-link-alt"></i> 応募フォームへ
+                    </a>
+
+                    <div class="apply-notes">
+                        <p><i class="fas fa-info-circle"></i> 応募に関する注意事項</p>
+                        <ul>
+                            <li>16歳以下の方の応募は受け付けできません</li>
+                            <li>すでにIRIAMで個人配信活動をしている方はそのまま加入できません</li>
+                            <li>他事務所に所属している方はそのまま加入できません</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <p class="contact-text"><i class="fas fa-comment-dots"></i> お問い合わせは公式X（旧Twitter）のDMへ</p>
+
+                    <div class="sns-links">
+                        <a href="https://x.com/chimelab_" target="_blank" rel="noopener noreferrer"
+                            class="sns-button x-button">
+                            <i class="fab fa-x-twitter"></i>
+                            <span class="sns-label">Chimelab公式 X (@chimelab_)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">Chimelab</div>
+            <div class="footer-bottom">
+                &copy; 2025 Chimelab（キメラボ）
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JavaScript ========== -->
+    <script>
+        // ハンバーガーメニュー
+        const menuToggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            nav.classList.toggle("active");
+        });
+
+        // ナビリンククリックでメニューを閉じる
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove("active");
+                nav.classList.remove("active");
+            });
+        });
+
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = 60;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // === ライバーポップアップ表示ロジック ===
+        const popupArea = document.getElementById('liver-popup-area');
+        const popupCloseBtn = document.getElementById('liver-popup-close');
+        const popupPrevBtn = document.getElementById('liver-popup-prev');
+        const popupNextBtn = document.getElementById('liver-popup-next');
+        const allPopupCards = document.querySelectorAll('.liver-popup-card');
+        const liverCards = document.querySelectorAll('.liver-grid .liver-card');
+
+        // ライバーのIDリストを配列化
+        const liverIdList = Array.from(allPopupCards).map(card => card.id);
+        let currentLiverIndex = -1;
+
+        function showLiverPopup(liverId) {
+            currentLiverIndex = liverIdList.indexOf(liverId);
+            if (currentLiverIndex === -1) return;
+
+            // 全カードを一旦非表示（アニメーションリセットのため）
+            allPopupCards.forEach(card => {
+                card.style.display = 'none';
+                card.classList.remove('liver-popup-animate');
+                card.classList.remove('liver-popup-closing');
+            });
+
+            // 対象カードだけ表示
+            const targetCard = document.getElementById(liverId);
+            if (targetCard) {
+                popupArea.style.display = 'block';
+                targetCard.style.display = 'flex';
+                // アニメーションを発火
+                requestAnimationFrame(() => {
+                    targetCard.classList.add('liver-popup-animate');
+                });
+                // スクロール
+                setTimeout(() => {
+                    const headerHeight = 60;
+                    const pos = popupArea.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                }, 50);
+            }
+            // クリックしたカードをハイライト
+            liverCards.forEach(card => card.classList.remove('liver-card-active'));
+            const clickedCard = document.querySelector(`.liver-card[href="#${liverId}"]`);
+            if (clickedCard) clickedCard.classList.add('liver-card-active');
+        }
+
+        function navigateLiver(direction) {
+            if (currentLiverIndex === -1) return;
+
+            // 次・前のインデックス計算（ループ処理）
+            let newIndex = currentLiverIndex + direction;
+            if (newIndex < 0) newIndex = liverIdList.length - 1;
+            if (newIndex >= liverIdList.length) newIndex = 0;
+
+            const newLiverId = liverIdList[newIndex];
+
+            // 切り替え時のアニメーション（一旦閉じる演出を挟むか、直接切り替えるか）
+            // ここでは直接切り替えてアニメーションを再適用する
+            showLiverPopup(newLiverId);
+        }
+
+        function closeLiverPopup() {
+            const visibleCard = document.querySelector('.liver-popup-card.liver-popup-animate');
+            if (visibleCard) {
+                visibleCard.classList.remove('liver-popup-animate');
+                visibleCard.classList.add('liver-popup-closing');
+                setTimeout(() => {
+                    visibleCard.classList.remove('liver-popup-closing');
+                    visibleCard.style.display = 'none';
+                    popupArea.style.display = 'none';
+                }, 350);
+            } else {
+                popupArea.style.display = 'none';
+            }
+            currentLiverIndex = -1;
+            liverCards.forEach(card => card.classList.remove('liver-card-active'));
+        }
+
+        // カードクリック
+        liverCards.forEach(card => {
+            card.addEventListener('click', function (e) {
+                e.preventDefault();
+                const liverId = this.getAttribute('href').substring(1);
+                showLiverPopup(liverId);
+            });
+        });
+
+        // 閉じるボタン
+        popupCloseBtn.addEventListener('click', closeLiverPopup);
+
+        // 前後ボタン
+        popupPrevBtn.addEventListener('click', () => navigateLiver(-1));
+        popupNextBtn.addEventListener('click', () => navigateLiver(1));
+
+        // --- スワイプナビゲーションの実装 ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        // ポップアップエリア内でのタッチ開始
+        popupArea.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        // ポップアップエリア内でのタッチ終了
+        popupArea.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+
+            // 横方向の移動距離が縦方向より大きく、かつ一定距離（50px）以上の場合のみ発火
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    // 右スワイプ -> 前のメンバー
+                    navigateLiver(-1);
+                } else {
+                    // 左スワイプ -> 次のメンバー
+                    navigateLiver(1);
+                }
+            }
+        }
+
+        // スクロール時のヘッダー変化
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // フッターロゴ3クリック隠しコマンド
+        let footerLogoClickCount = 0;
+        let footerLogoClickTimer;
+        const footerLogo = document.querySelector('.footer .logo');
+        if (footerLogo) {
+            footerLogo.style.cursor = 'pointer';
+            footerLogo.addEventListener('click', () => {
+                footerLogoClickCount++;
+                clearTimeout(footerLogoClickTimer);
+                if (footerLogoClickCount === 3) {
+                    window.location.href = '/admin';
+                    footerLogoClickCount = 0;
+                } else {
+                    footerLogoClickTimer = setTimeout(() => {
+                        footerLogoClickCount = 0;
+                    }, 500);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
