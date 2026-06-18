@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="毎回違う道を歩ける運動用ルート自動生成ツール">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="WalkRoute">
+  <meta name="theme-color" content="#302b63">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%23302b63'/><text x='256' y='340' font-size='280' text-anchor='middle' fill='white'>🚶</text></svg>">
+  <title>ウォーキングルート生成</title>
+  <!-- Leaflet.js CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ===== ヘッダー ===== */
+    .header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      position: relative;
+    }
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header p {
+      font-size: 0.85rem;
+      color: #9a9abf;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== メインコンテナ ===== */
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+    }
+
+    /* ===== グラスモーフィズムカード ===== */
+    .card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 32px rgba(102,126,234,0.15); }
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8888aa;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== 距離入力 ===== */
+    .distance-display {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .distance-display span { font-size: 1.2rem; color: #9a9abf; }
+    .slider-wrapper { position: relative; padding: 0.5rem 0; }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: #666;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== ボタン ===== */
+    .btn-primary {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    .btn-primary:not(:disabled):hover::after { transform: translateX(100%); }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn-secondary:active { background: rgba(255,255,255,0.12); }
+    .btn-danger {
+      background: rgba(234,67,53,0.15);
+      border-color: rgba(234,67,53,0.3);
+      color: #ff6b6b;
+    }
+
+    /* ===== ローディング ===== */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,12,41,0.92);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .loading-overlay.active { display: flex; }
+    .spinner {
+      width: 56px; height: 56px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { font-size: 0.95rem; color: #bbb; text-align: center; }
+    .loading-step { font-size: 0.8rem; color: #8888aa; margin-top: -0.8rem; }
+
+    /* ===== 結果カード ===== */
+    #result-section { display: none; }
+    #result-section.active { display: block; animation: slideUp 0.4s ease-out; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .route-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .stat-item { text-align: center; }
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: #8888aa;
+      margin-top: 0.2rem;
+    }
+
+    /* ===== 地図 ===== */
+    #map {
+      width: 100%;
+      height: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ===== 履歴 ===== */
+    #history-section { display: none; }
+    #history-section.active { display: block; }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.85rem;
+    }
+    .history-item:last-child { border-bottom: none; }
+    .history-date { color: #8888aa; font-size: 0.75rem; }
+    .history-dist { color: #667eea; font-weight: 600; }
+    .history-overlap { color: #ff6b6b; font-size: 0.7rem; }
+
+    /* ===== トースト通知 ===== */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(40,40,60,0.95);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      z-index: 2000;
+      transition: transform 0.3s ease-out;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      max-width: 90vw;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.error { border-color: rgba(234,67,53,0.4); }
+
+    /* ===== アニメーション用 ===== */
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ===== ステータスバッジ ===== */
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .badge-success { background: rgba(76,175,80,0.2); color: #81c784; }
+    .badge-warning { background: rgba(255,193,7,0.2); color: #ffd54f; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ローディングオーバーレイ ===== -->
+  <div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-text">ルートを生成中...</div>
+    <div class="loading-step" id="loading-step"></div>
+    <button class="btn-cancel" onclick="cancelGeneration()" style="margin-top:1.5rem;padding:0.6rem 2rem;border:1px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(255,255,255,0.08);color:#ccc;font-family:inherit;font-size:0.85rem;cursor:pointer;">キャンセル</button>
+  </div>
+
+  <!-- ===== トースト ===== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ===== ヘッダー ===== -->
+  <header class="header">
+    <h1>🚶 ウォーキングルート</h1>
+    <p>毎回違う道を歩こう</p>
+  </header>
+
+  <!-- ===== メインコンテンツ ===== -->
+  <main class="container">
+
+    <!-- 距離入力カード -->
+    <div class="card">
+      <div class="card-title">📏 歩きたい距離</div>
+      <div class="distance-display">
+        <span id="distance-value">3.0</span> <span>km</span>
+      </div>
+      <div class="slider-wrapper">
+        <input type="range" id="distance-slider" min="0.5" max="10" step="0.5" value="3.0">
+        <div class="slider-labels"><span>0.5km</span><span>5km</span><span>10km</span></div>
+      </div>
+    </div>
+
+    <!-- 生成ボタン -->
+    <button class="btn-primary" id="btn-generate" onclick="generateRoute()">
+      🗺️ ルートを生成する
+    </button>
+
+    <!-- 結果セクション -->
+    <div id="result-section">
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-title">📊 ルート情報</div>
+        <div class="route-stats">
+          <div class="stat-item">
+            <div class="stat-value" id="stat-distance">-</div>
+            <div class="stat-label">距離</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="stat-time">-</div>
+            <div class="stat-label">推定時間</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="stat-overlap">-</div>
+            <div class="stat-label">重複率</div>
+          </div>
+        </div>
+        <div id="map"></div>
+        <button class="btn-primary" id="btn-google-maps" onclick="openGoogleMaps()">
+          📍 Google Mapsで開く
+        </button>
+        <button class="btn-secondary" onclick="generateRoute()">
+          🔄 別のルートを生成
+        </button>
+      </div>
+    </div>
+
+    <!-- 履歴セクション -->
+    <div id="history-section" class="card" style="margin-top:1rem;">
+      <div class="card-title">📜 過去のルート</div>
+      <div id="history-list"></div>
+      <button class="btn-secondary btn-danger" onclick="clearHistory()" style="margin-top:0.8rem;">
+        🗑️ 履歴をクリア
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ===== JavaScript ===== -->
+  <script src="app.js"></script>
+
+  <!-- Service Worker 登録（キャッシュ更新を強制） -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      // 既存のService Workerのキャッシュをクリアして最新コードを強制ロード
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        registrations.forEach(reg => reg.update());
+      });
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+      // アプリ起動時にキャッシュストレージをクリア（古いキャッシュ対策）
+      if ('caches' in window) {
+        caches.keys().then(keys => {
+          keys.forEach(key => {
+            if (key !== 'walkroute-v3') caches.delete(key);
+          });
+        });
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "ウォーキングルート生成",
+  "short_name": "WalkRoute",
+  "description": "毎回違う道を歩ける運動用ルート自動生成ツール",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f0c29",
+  "theme_color": "#302b63",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%23302b63'/><text x='256' y='340' font-size='280' text-anchor='middle' fill='white'>🚶</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
