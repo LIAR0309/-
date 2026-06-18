@@ -1,0 +1,64 @@
+{
+  "input_srt": "",
+  "title_name": "Text+",
+  "effect_preset": "bold_outline",
+  "effect_preset_cycle": [],
+  "effect_auto_rules_enabled": false,
+  "font_preset": "",
+  "font_preset_cycle": [],
+  "gap_frames": 0,
+  "minimum_duration_frames": 2,
+  "max_chars_per_line": 24,
+  "wrap_enabled": true,
+  "replace_newlines_with_spaces_before_wrap": false,
+  "text": {
+    "font": "Noto Sans CJK JP",
+    "style": "Regular",
+    "size": 0.075,
+    "line_spacing": 1.0,
+    "tracking": 1.0,
+    "all_caps": false
+  },
+  "layout": {
+    "horizontal_anchor": 0.5,
+    "vertical_anchor": 0.86,
+    "alignment": "center"
+  },
+  "color": {
+    "red": 1.0,
+    "green": 1.0,
+    "blue": 1.0,
+    "alpha": 1.0
+  },
+  "outline": {
+    "enabled": true,
+    "red": 0.0,
+    "green": 0.0,
+    "blue": 0.0,
+    "alpha": 1.0,
+    "width": 0.018
+  },
+  "shadow": {
+    "enabled": true,
+    "red": 0.0,
+    "green": 0.0,
+    "blue": 0.0,
+    "alpha": 0.45,
+    "offset_x": 0.006,
+    "offset_y": -0.006,
+    "blur": 0.35
+  },
+  "background": {
+    "enabled": false,
+    "red": 0.0,
+    "green": 0.0,
+    "blue": 0.0,
+    "alpha": 0.45,
+    "padding": 0.08,
+    "roundness": 0.18
+  },
+  "logging": {
+    "write_log_file": true,
+    "log_file": ""
+  }
+}

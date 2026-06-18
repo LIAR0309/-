@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二次創作ガイドライン - Chimelab（キメラボ）</title>
-    <meta name="description" content="Chimelab（キメラボ）所属ライバーに関する二次創作ガイドラインです。ファンの皆様の創作活動を応援しています。">
+    <title>二次創作ガイドライン | 【公式】IRIAM Vライバー事務所 Chimelab（キメラボ）</title>
+    <meta name="description"
+        content="IRIAM Vライバー事務所 Chimelab（キメラボ）所属ライバーに関する二次創作ガイドラインです。切り抜きや同人活動に関するルールを掲載しています。ファンの皆様の創作活動を応援しています。">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap"
@@ -520,6 +521,35 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // 目次リンクのスクロール位置をヘッダー分オフセット
+        document.querySelectorAll('.guidelines-toc-list a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+                    window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // === 画像ダウンロード防止 ===
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        // === HTMLソース・保存の簡易防止（キーボードショートカット無効化） ===
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12') { e.preventDefault(); return false; }
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'u' || e.key === 'U')) { e.preventDefault(); return false; }
+            if ((e.ctrlKey || e.metaKey) && (e.shiftKey || e.altKey) && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) { e.preventDefault(); return false; }
         });
     </script>
 </body>

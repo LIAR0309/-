@@ -1,8 +1,3 @@
-/* ============================
-   Chimelab - Clean & Modern Design (White Theme)
-   Theme: Ease of Use & Accessibility
-   ============================ */
-
 /* === CSS Variables === */
 :root {
   /* カラーパレット - 見やすさと親しみやすさ */
@@ -52,6 +47,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -64,8 +60,14 @@ body {
   background-size: 50px 50px;
   background-position: center top;
   color: var(--text-dark);
-  line-height: 1.8;
-  font-size: 16px;
+  line-height: 1.7;
+  /* 読みやすさのため微調整 */
+  font-size: clamp(14px, 1vw + 10px, 17px);
+  /* デバイスに合わせて14px~17pxまで可変 */
+  word-break: normal;          /* auto-phraseはiOS等で不具合が出るため通常の改行に */
+  overflow-wrap: break-word;   /* はみ出し防止（文字単位の強制改行は最終手段のみ） */
+  line-break: strict;          /* 句読点の禁則処理を厳密に適用 */
+  /* はみ出し防止 */
   overflow-x: hidden;
   position: relative;
   /* 背景をゆっくり動かすアニメーション */
@@ -155,7 +157,14 @@ h2,
 h3,
 h4 {
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.35;
+  /* text-wrap: balance はiOS等で不自然な改行を引き起こすため削除 */
+  overflow-wrap: break-word;
+}
+
+p {
+  /* text-wrap: pretty は予期せぬ改行を防ぐため削除 */
+  line-height: 1.6;
 }
 
 h2 {
@@ -307,13 +316,28 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../../img/chimelab-logo.jpg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: #ffffff;
   color: var(--text-dark);
   position: relative;
+}
+
+/* フェードインする背景画像レイヤー */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('../../img/members.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  opacity: 0;
+  animation: heroBgFadeIn 1.5s ease forwards 4s; /* 「何者かになりたい」(約3.9s完了)の後に出現 */
+}
+
+@keyframes heroBgFadeIn {
+  to { opacity: 1; }
 }
 
 .hero::after {
@@ -364,18 +388,21 @@ h2 {
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: clamp(24px, 4vw + 12px, 40px);
+  /* スマホで縮小、PCで最大40px */
   margin-bottom: 24px;
   color: var(--text-dark);
   text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: clamp(15px, 2vw + 8px, 1.2rem);
   color: var(--text-light);
   margin-bottom: 48px;
   line-height: 1.8;
   text-shadow: 1.5px 1.5px 0 #fff, -1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 0 1.5px 0 #fff, 0 -1.5px 0 #fff, 1.5px 0 0 #fff, -1.5px 0 0 #fff;
+  text-wrap: pretty;
+  /* 本文の最終行が単語1つになるのを防ぐ */
 }
 
 .hero-actions {
@@ -447,14 +474,13 @@ h2 {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
 
 .section h2 {
-  font-size: 2rem;
+  font-size: clamp(20px, 3.5vw + 10px, 32px);
   text-align: center;
   margin-bottom: 16px;
 }
@@ -463,7 +489,8 @@ h2 {
   text-align: center;
   color: var(--text-light);
   margin-bottom: 60px;
-  font-size: 1.1rem;
+  font-size: clamp(14px, 1.5vw + 8px, 1.1rem);
+  text-wrap: pretty;
 }
 
 /* === Cards === */
@@ -533,7 +560,6 @@ h2 {
   border-color: rgba(108, 92, 231, 0.3);
 }
 
-
 /* 活動状態バッジ */
 .infomation {
   display: inline-block;
@@ -548,6 +574,379 @@ h2 {
   letter-spacing: 0.03em;
 }
 
+/* === News Slider System === */
+.news-slider-container {
+  position: relative;
+  max-width: 850px; /* PC版では大きく表示 */
+  margin: 0 auto 40px;
+  padding: 0 60px; /* 左右矢印が被らないように十分な余白を確保 */
+  transition: all 0.3s ease;
+}
+
+.news-slider {
+  overflow: hidden;
+  border-radius: var(--radius-lg); /* 角丸を大きめにして柔らかくモダンに */
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15); /* シャドウをより豊かに */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.news-slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 400%; /* スライド4枚分 */
+}
+
+.news-slider-slide {
+  width: 25%; /* 1枚当たり */
+  flex-shrink: 0;
+  padding: 10px;
+}
+
+/* ニュースカード全体 (PC版スプリットレイアウト) */
+.news-card-item {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  padding: 30px;
+  text-decoration: none;
+  color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(108, 92, 231, 0.15);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.news-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(108, 92, 231, 0.15);
+  border-color: var(--primary-purple);
+}
+
+/* カード上部のグラデーションライン演出 */
+.news-card-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-main);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.news-card-item:hover::before {
+  opacity: 1;
+}
+
+/* 縦積みレイアウト（画像上・テキスト下）- 1周年グッズなど */
+.news-card-item--stacked {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  gap: 0;
+}
+
+.news-card-img-top {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.news-card-img-top img {
+  width: 60%; /* 元サイズから40%縮小 */
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+  margin: 0;
+  padding: 0;
+}
+
+.news-card-item--stacked:hover .news-card-img-top img {
+  transform: scale(1.03);
+}
+
+.news-card-item--stacked .news-card-text-area {
+  padding: 24px 28px;
+  background: rgba(255,255,255,0.75);
+}
+
+
+
+/* 縦長動画を上部に表示するコンテナ（Live2D公開スライド用）*/
+/* 縦長動画をそのまま置くコンテナ（黒縁なし・自然サイズ）*/
+.news-card-video-top {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+  background: transparent;
+  padding-top: 30px; /* PC版のみVideoの上に隙間を作る */
+}
+
+.news-card-video-top-media {
+  width: 35%; /* 50%からさらに30%縮小 */
+  height: auto;  /* 縦長のまま自然なアスペクト比を維持 */
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.news-card-item--stacked:hover .news-card-video-top-media {
+  transform: scale(1.02);
+}
+
+
+
+/* メディアエリア (動画・画像を左に配置) */
+.news-card-media-area {
+  flex: 0 0 220px; /* PC版での動画の幅 */
+  width: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 縦長メディア専用の黒縁なしコンテナ */
+.news-card-video-wrap {
+  width: 100%;
+  aspect-ratio: 1080 / 2150; /* 縦長動画のオリジナル比率を維持 */
+  height: auto;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(108, 92, 231, 0.15);
+  background: #000;
+  position: relative;
+}
+
+/* 横長メディア（グッズ画像など）専用のコンテナ */
+.news-card-video-wrap--landscape {
+  aspect-ratio: 4 / 3; /* 元の横長画像比率を維持 */
+  background: transparent;
+}
+
+.news-card-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 縦長枠にぴったりフィットさせて黒縁を排除 */
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* ホバー時に動画を少しズーム */
+.news-card-item:hover .news-card-video {
+  transform: scale(1.08);
+}
+
+/* テキストコンテンツエリア */
+.news-card-text-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.news-card-badge-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.news-card-tag {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.news-card-date {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-family: 'Noto Sans JP', sans-serif;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.news-card-date i {
+  color: var(--primary-purple);
+}
+
+.news-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.news-card-item:hover .news-card-title {
+  color: var(--primary-purple);
+}
+
+.news-card-description {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 長文テキストを3行に省略 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card-more {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-purple);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  transition: gap 0.3s ease;
+}
+
+.news-card-item:hover .news-card-more {
+  gap: 10px;
+}
+
+/* スライダー矢印ナビゲーション */
+.news-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  color: var(--primary-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.news-slider-arrow:hover {
+  background: var(--gradient-main);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+}
+
+.news-slider-arrow-prev {
+  left: 0;
+}
+
+.news-slider-arrow-next {
+  right: 0;
+}
+
+/* ドットインジケーター */
+.news-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.news-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(108, 92, 231, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.news-slider-dot.active {
+  background: var(--primary-purple);
+  width: 24px; /* アクティブなドットを横長にして近代的なスタイルに */
+  border-radius: var(--radius-full);
+}
+
+/* === スライダー スマホ向けレスポンシブ === */
+@media (max-width: 768px) {
+  .news-slider-container {
+    padding: 0 40px;
+    max-width: 100%;
+  }
+
+  .news-card-item {
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .news-card-media-area {
+    flex: none;
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  /* 横長画像はスマホでも全幅表示 */
+  .news-card-video-wrap--landscape {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* 横長画像の親エリアもスマホで全幅に */
+  .news-card-media-area:has(.news-card-video-wrap--landscape) {
+    max-width: 100%;
+  }
+
+  .news-card-text-area {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-slider-container {
+    padding: 0 36px;
+  }
+
+  .news-slider-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .news-card-title {
+    font-size: 1rem;
+  }
+}
+
+
 /* === News Section === */
 .news-list {
   max-width: 800px;
@@ -559,6 +958,7 @@ h2 {
 
 .news-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 15px;
   padding: 15px;
@@ -589,6 +989,10 @@ h2 {
   white-space: nowrap;
 }
 
+.news-tag-skins {
+  background: var(--accent-cyan);
+}
+
 .news-tag-event {
   background: var(--primary-pink);
 }
@@ -606,17 +1010,24 @@ h2 {
   background: var(--text-light);
 }
 
+.news-tag-rank {
+  background: #ff4757;
+}
+
 .news-title {
   font-size: 1rem;
   font-weight: 500;
-  flex: 1;
+  flex: 1 1 100%;
+}
+
+.news-item p,
+.news-title a {
+  font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .news-title a {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.5;
 }
 
 .news-title a:hover {
@@ -796,7 +1207,7 @@ h2 {
 }
 
 .liver-card {
-  padding: 24px;
+  padding: 16px 12px;
   text-align: center;
 }
 
@@ -805,13 +1216,14 @@ h2 {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: var(--radius-md);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   box-shadow: var(--shadow-sm);
 }
 
 .liver-info h3 {
-  font-size: 1.1rem;
+  font-size: clamp(15px, 3vw, 1.1rem);
   margin-bottom: 6px;
+  word-break: normal;
 }
 
 .liver-info p {
@@ -968,7 +1380,6 @@ h2 {
   margin-top: 26px;
 }
 
-/* === Image Watermark === */
 .liver-image-wrapper,
 .outfit-image-wrapper {
   position: relative;
@@ -976,24 +1387,6 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-}
-
-.liver-image-wrapper::after,
-.outfit-image-wrapper::after {
-  content: 'Chimelab';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-30deg);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: rgba(108, 92, 231, 0.12);
-  letter-spacing: 4px;
-  pointer-events: none;
-  z-index: 2;
-  white-space: nowrap;
-  text-transform: uppercase;
-  font-family: var(--font-main);
 }
 
 .outfit-toggle {
@@ -1050,9 +1443,12 @@ h2 {
 }
 
 .news-page-title {
-  font-size: 2rem;
+  font-size: clamp(24px, 4vw + 12px, 36px);
   text-align: center;
   margin-bottom: 16px;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-break: loose;
 }
 
 .news-page-title i {
@@ -1155,7 +1551,11 @@ h2 {
 .news-page-item-title {
   font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 6px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-break: loose;
 }
 
 .news-page-item-title a {
@@ -1168,9 +1568,21 @@ h2 {
 }
 
 .news-page-item-summary {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  line-height: 1.7;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #4d5960;
+  line-height: 1.85;
+  max-width: 72ch;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-break: loose;
+}
+
+@supports (word-break: auto-phrase) {
+  .news-page-title,
+  .news-page-item-title,
+  .news-page-item-summary {
+    word-break: auto-phrase;
+  }
 }
 
 /* アニメーション */
@@ -1212,6 +1624,136 @@ h2 {
   margin-top: 50px;
 }
 
+/* === Live2Dバナー画像レイアウト === */
+.news-page-item--live2d {
+  border-left-color: #00cec9;
+}
+
+.news-banner-wrap {
+  margin: 12px 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.news-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
+}
+
+.news-page-item--live2d:hover .news-banner-img {
+  transform: scale(1.02);
+}
+
+/* === 新衣装カード レイアウト === */
+.news-page-item--outfit {
+  border-left-color: var(--accent-cyan);
+}
+
+
+.news-outfit-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 4px;
+}
+
+.news-outfit-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.news-outfit-img {
+  width: 140px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(0, 206, 201, 0.08), rgba(108, 92, 231, 0.08));
+  border: 2px solid rgba(0, 206, 201, 0.3);
+  display: block;
+}
+
+/* --- 横長バナー画像用モディファイア --- */
+.news-outfit-img-wrap--banner {
+  width: 200px;
+}
+
+.news-outfit-img--banner {
+  width: 200px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.news-outfit-img--banner:hover {
+  transform: scale(1.02);
+}
+
+.news-outfit-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--gradient-main);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  box-shadow: 0 3px 10px rgba(108, 92, 231, 0.4);
+}
+
+.news-outfit-links {
+  margin-top: 16px;
+}
+
+.news-outfit-links .button {
+  width: auto;
+  max-width: none;
+}
+
+@media (max-width: 700px) {
+  .news-outfit-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 14px;
+  }
+
+  .news-outfit-img-wrap {
+    width: 120px;
+  }
+
+  .news-outfit-img {
+    width: 120px;
+    height: 170px;
+  }
+
+  .news-outfit-img-wrap--banner {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .news-outfit-img--banner {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .news-outfit-layout .news-page-item-body {
+    width: 100%;
+  }
+
+  .news-outfit-links {
+    display: flex;
+    justify-content: stretch;
+  }
+}
+
+
 /* ニュースページ スマホ対応 */
 @media (max-width: 768px) {
   .news-page-section {
@@ -1219,7 +1761,13 @@ h2 {
   }
 
   .news-page-title {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
+    line-height: 1.35;
+    padding: 0 8px;
+  }
+
+  .news-page-title i {
+    margin-right: 6px;
   }
 
   .news-filter {
@@ -1233,20 +1781,64 @@ h2 {
   }
 
   .news-page-item {
-    padding: 16px;
+    padding: 18px 16px;
+    margin-bottom: 18px;
+    border-left-width: 3px;
   }
 
   .news-page-item-header {
     flex-wrap: wrap;
     gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .news-page-date {
+    font-size: 0.86rem;
+  }
+
+  .news-tag {
+    font-size: 0.76rem;
+    line-height: 1.35;
+    padding: 5px 9px;
   }
 
   .news-page-item-title {
     font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
   }
 
   .news-page-item-summary {
-    font-size: 0.85rem;
+    font-size: 0.94rem;
+    line-height: 1.9;
+    max-width: none;
+  }
+
+  .news-page-item-body .button {
+    width: 100%;
+    max-width: none;
+    min-height: 44px;
+    padding-inline: 14px;
+    text-align: center;
+  }
+
+  .news-page-item-body .button-sm {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .news-page-item {
+    padding: 16px 14px;
+  }
+
+  .news-page-item-title {
+    font-size: 0.96rem;
+  }
+
+  .news-page-item-summary {
+    font-size: 0.9rem;
+    line-height: 1.85;
   }
 }
 
@@ -1256,7 +1848,7 @@ h2 {
 }
 
 .guidelines-page-title {
-  font-size: 2rem;
+  font-size: clamp(24px, 4vw + 12px, 36px);
   text-align: center;
   margin-bottom: 16px;
 }
@@ -1300,7 +1892,7 @@ h2 {
 }
 
 .guidelines-card-header h2 {
-  font-size: 1.3rem;
+  font-size: clamp(18px, 2.5vw + 10px, 1.4rem);
   text-align: left;
   margin-bottom: 0;
 }
@@ -1867,6 +2459,39 @@ h2 {
   right: -25px;
 }
 
+/* === Display Utilities === */
+.no-wrap {
+  display: inline-block;
+}
+
+.sp-only {
+  display: none !important;
+}
+
+.pc-only {
+  display: block;
+}
+
+span.pc-only,
+br.pc-only {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .pc-only {
+    display: none !important;
+  }
+
+  .sp-only {
+    display: block !important;
+  }
+
+  span.sp-only,
+  br.sp-only {
+    display: inline !important;
+  }
+}
+
 /* スマホ版レイアウト調整 */
 @media (max-width: 768px) {
 
@@ -1982,5 +2607,418 @@ h2 {
 @media (max-width: 600px) {
   .guidelines-toc-list {
     grid-template-columns: 1fr;
+  }
+}
+
+/* === Intro Screen (オープニング演出) === */
+body.is-intro {
+  overflow: hidden !important;
+}
+
+body.is-intro header,
+body.is-intro .hero-bg-effect,
+body.is-intro .hero p,
+body.is-intro .hero-actions,
+body.is-intro .section,
+body.is-intro footer {
+  opacity: 0;
+  visibility: hidden;
+}
+
+header,
+.hero-bg-effect,
+.hero p,
+.hero-actions,
+.section,
+footer {
+  transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
+}
+
+.intro-line1,
+.intro-line2,
+.intro-line3 {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.intro-line1 {
+  animation: introFadeInUp 1s ease forwards 0.5s;
+}
+
+.intro-line2 {
+  animation: introFadeInUp 1s ease forwards 1.7s;
+}
+
+.intro-line3 {
+  animation: introFadeInUp 1s ease forwards 2.9s;
+}
+
+body.skip-intro .intro-line1,
+body.skip-intro .intro-line2,
+body.skip-intro .intro-line3 {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@keyframes introFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === 画像ダウンロード防止 === */
+html:not(.is-dev) img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+/* リンク内の画像はリンクのクリックを維持 */
+html:not(.is-dev) a img {
+  pointer-events: none;
+}
+
+/* ============================================
+   動的デザイン強化 — 10項目
+   ============================================ */
+
+/* === ① Scroll Reveal Animations === */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* スタガー遅延 */
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.40s; }
+
+/* スライドイン変種 */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-left.revealed,
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* reduce-motion対応 */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* === ② Scroll Progress Bar === */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gradient-main);
+  z-index: 1001;
+  transition: none;
+  box-shadow: 0 0 8px rgba(124, 92, 231, 0.5);
+  pointer-events: none;
+}
+
+/* === ③ Count-Up Stats === */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px dashed var(--outline-variant);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary-purple);
+  line-height: 1.2;
+}
+
+.stat-suffix {
+  font-size: 1rem;
+  font-weight: 700;
+  -webkit-text-fill-color: var(--primary-purple);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stats-row {
+    gap: 12px;
+  }
+}
+
+/* === ④ Floating Particles (Hero) === */
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.particle--purple {
+  background: radial-gradient(circle, rgba(124, 92, 231, 0.5), rgba(124, 92, 231, 0.1));
+  box-shadow: 0 0 6px rgba(124, 92, 231, 0.3);
+}
+
+.particle--pink {
+  background: radial-gradient(circle, rgba(232, 67, 147, 0.45), rgba(232, 67, 147, 0.1));
+  box-shadow: 0 0 6px rgba(232, 67, 147, 0.3);
+}
+
+.particle--cyan {
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.45), rgba(0, 180, 216, 0.1));
+  box-shadow: 0 0 6px rgba(0, 180, 216, 0.3);
+}
+
+@keyframes particleRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.4);
+  }
+  15% {
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80vh) scale(1);
+  }
+}
+
+/* === ⑤ Section Wave Dividers === */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin-top: -1px;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* === ⑥ Liver Card Tilt Effect === */
+.liver-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.liver-card .liver-info {
+  transform: translateZ(20px);
+}
+
+/* === ⑦ Flow Steps Sequential Animation === */
+.flow-step {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flow-step.step-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flow-arrow {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.flow-arrow.step-visible {
+  opacity: 0.65;
+  transform: scale(1);
+}
+
+@media (min-width: 768px) {
+  .flow-arrow.step-visible i {
+    transform: rotate(-90deg);
+  }
+}
+
+
+
+/* === ⑨ Button Shimmer Effect === */
+.button-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  animation: shimmerSlide 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSlide {
+  0% { left: -100%; }
+  40% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* === ⑩ Scroll Indicator === */
+.scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-purple);
+  opacity: 0.6;
+  animation: indicatorBounce 2.2s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+}
+
+.scroll-indicator span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scroll-indicator i {
+  font-size: 1.2rem;
+}
+
+@keyframes indicatorBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+
+/* スクロール後は非表示 */
+.scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* スマホ調整 */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 16px;
+  }
+
+  .wave-divider {
+    height: 24px;
+  }
+}
+
+
+/* スマホ用: hero背景画像をさらに上に上げる */
+@media (max-width: 768px) {
+  .hero::before {
+    background-position: center 20%;
+  }
+
+  /* スマホ版のみ、Videoの表示サイズを更に大きくする（52.5% -> 78.75%） */
+  .news-card-video-top-media {
+    width: 78.75%;
+  }
+}
+
+/* スマホ版のみ：カードのサイズ・パディング統一を維持 */
+@media (max-width: 768px) {
+  .news-card-item--stacked {
+    height: 100%;
+  }
+  .news-card-img-top,
+  .news-card-video-top {
+    height: 320px;
+    align-items: center;
+    padding-top: 0; /* PC版の隙間をリセット */
+  }
+  .news-card-item--stacked .news-card-text-area {
+    padding: 32px 30px !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* スマホ版のみ、1周年記念グッズの画像サイズを40%大きくする（60% -> 100%） */
+  .news-card-img-top img {
+    width: 100%;
   }
 }

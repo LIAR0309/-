@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWS / ニュース一覧 - Chimelab（キメラボ）</title>
-    <meta name="description" content="Chimelab（キメラボ）の最新ニュース・お知らせ一覧ページです。新メンバー情報やイベント情報をお届けします。">
+    <title>NEWS / ニュース一覧 | 【公式】IRIAM Vライバー事務所 Chimelab（キメラボ）</title>
+    <meta name="description"
+        content="IRIAM Vライバー事務所 Chimelab（キメラボ）の最新ニュース・お知らせ一覧ページです。新メンバーのデビュー情報やイベント達成情報など、キメラボの最新動向をお届けします。">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap"
@@ -36,11 +37,12 @@
 
             <nav class="nav" id="nav">
                 <ul>
-                    <li><a href="index.html#about">キメラボとは</a></li>
-                    <li><a href="index.html#livers">所属ライバー</a></li>
-                    <li><a href="news.html" class="active-nav">ニュース</a></li>
-                    <li><a href="index.html#support">サポート</a></li>
-                    <li><a href="index.html#apply">応募する</a></li>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="news.html">ニュース</a></li>
+                    <li><a href="#livers">所属ライバー</a></li>
+                    <li><a href="#about">キメラボとは</a></li>
+                    <li><a href="#support">サポート</a></li>
+                    <li><a href="#apply">応募する</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,14 +61,476 @@
                     <button class="news-filter-btn" data-filter="debut">新メンバー</button>
                     <button class="news-filter-btn" data-filter="event">イベント</button>
                     <button class="news-filter-btn" data-filter="info">お知らせ</button>
+                    <button class="news-filter-btn" data-filter="rank">ランク</button>
+                    <button class="news-filter-btn" data-filter="skins">新衣装</button>
                 </div>
 
                 <!-- ニュース一覧 -->
                 <div class="news-page-list" id="news-page-list">
+                    <!-- 2026年6月 -->
+                    <div class="news-month-group">
+                        <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2026年6月</h2>
+
+                        <!-- 百彩イト 再デビュー準備中 -->
+                        <article class="news-page-item" data-category="info">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.06.17</time>
+                                <span class="news-tag news-tag-info">✨ お知らせ</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <img src="img/ito_momoiro1.png" alt="百彩イト 新モデル準備中"
+                                        class="news-outfit-img news-outfit-img--banner">
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        【再デビュー】百彩イトがIRIAM再デビュー準備中！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        百彩イトがIRIAMでの再デビューに向けて現在準備中です！🐰<br><br>
+                                        今後はモデルが新しく変わり、さらに可愛くなった姿をお披露目する予定です。準備が整い次第、こちらのお知らせや公式Xにて続報をお伝えいたします。<br><br>
+                                        より魅力的になって帰ってくる百彩イトの再デビューを、ぜひ楽しみにお待ちください！
+                                    </p>
+                                    <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                        <a href="https://x.com/ito_chimelab" class="button button-primary button-sm"
+                                            target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-twitter"></i> 公式Xはこちら
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- ノエル・ミュージック Live2D公開 -->
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.06.10</time>
+                                <span class="news-tag news-tag-event">✨ Live2D公開</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <video src="video/noel_homepage.mov" autoplay loop muted playsinline
+                                        class="news-outfit-img news-outfit-img--banner"></video>
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        【Live2D公開】宝石の様に澄んだ歌声の白鳥「ノエル・ミュージック」のLive2Dモデルが公開！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        宝石の様に澄んだ歌声を持つ白鳥キメラ「ノエル・ミュージック」のLive2Dモデルが遂に公開されました！🦢<br><br>
+                                        彼女のチャームポイントである左右で異なる美しい瞳（オッドアイ）の動きや、優雅で洗練された仕草がなめらかに表現されています。紹介映像では、美しく動く彼女の姿を収録しています。<br><br>
+                                        Live2Dでさらに魅力的になったノエルの歌枠や雑談配信をぜひお楽しみください！
+                                    </p>
+                                    <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                        <a href="https://web.iriam.app/s/user/BsCofAn9tz?uuid=2bb0de1e"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fas fa-broadcast-tower"></i> IRIAM配信を見に行く
+                                        </a>
+                                        <a href="https://x.com/noel_chimelab" class="button button-secondary button-sm"
+                                            target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-twitter"></i> 公式Xはこちら
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 星々来びび Live2D公開 -->
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.06.10</time>
+                                <span class="news-tag news-tag-event">✨ Live2D公開</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <video src="video/bibi_homepage.mov" autoplay loop muted playsinline
+                                        class="news-outfit-img news-outfit-img--banner"></video>
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        【Live2D公開】星を愛するイッカククジラ「星々来びび」のLive2Dモデルが公開！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        星を愛するイッカククジラのキメラ「星々来びび」のLive2Dモデルがついに公開されました！⭐<br><br>
+                                        額の愛らしいツノや、かまちょで陽気な彼女の表情豊かな動きが完璧に再現されています。紹介映像では、Live2D化によってさらにキュートになった「星々来びび」の様子をご覧いただけます。<br><br>
+                                        さらに表情豊かに、より可愛くなったびびの配信にぜひ遊びにきてください！
+                                    </p>
+                                    <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                        <a href="https://web.iriam.app/s/user/qTNrEcfTgJ?uuid=aa19a3dc"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fas fa-broadcast-tower"></i> IRIAM配信を見に行く
+                                        </a>
+                                        <a href="https://x.com/Bibi_Sesera_" class="button button-secondary button-sm"
+                                            target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-twitter"></i> 公式Xはこちら
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.06.10</time>
+                                <span class="news-tag news-tag-event">1周年記念</span>
+                                <span class="news-tag news-tag-goods">グッズ</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <img src="img/keyholder_chimelab.jpg" alt="Chimelab 1周年記念グッズ受注開始！"
+                                        class="news-outfit-img news-outfit-img--banner">
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        【Chimelab 1周年記念】1期生つながるドット絵アクキー受注開始！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        ⋆͛📢⋆1周年記念グッズ受注開始‼️<br><br>
+                                        🧪1期生つながるドット絵アクキーの受注を開始しました✨<br>
+                                        つなげて飾れる可愛いドット絵アクリルキーホルダーがBOOTHに登場！<br>
+                                        期間限定の予約販売となりますので、ぜひお見逃しなく！
+                                    </p>
+
+                                    <div class="news-detail-info"
+                                        style="margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border-left: 4px solid #ff6b8b;">
+                                        <h4 style="margin-top: 0; margin-bottom: 10px; color: #ff6b8b;"><i
+                                                class="fas fa-shopping-bag"></i> グッズ詳細</h4>
+                                        <ul style="list-style: none; padding-left: 0; margin: 0; line-height: 1.8;">
+                                            <li><strong>■ 受注期間：</strong>〜2026年7月31日(金) 23:59迄</li>
+                                            <li><strong>■ 発送予定日：</strong>8月15日以降順次発送</li>
+                                            <li><strong>■ 価格：</strong>
+                                                <ul style="padding-left: 20px; list-style-type: disc;">
+                                                    <li>フルセット：3,000円</li>
+                                                    <li>単品：600円</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                        <a href="https://chimelab.booth.pm" class="button button-primary button-sm"
+                                            target="_blank" rel="noopener noreferrer">
+                                            <i class="fas fa-shopping-cart"></i> BOOTHで注文する
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.06.02</time>
+                                <span class="news-tag news-tag-event">1周年記念</span>
+                                <span class="news-tag news-tag-event">初コラボ配信</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <img src="img/Collaboration.jpg" alt="Chimelab 1周年記念！初コラボ配信開催！"
+                                        class="news-outfit-img news-outfit-img--banner">
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        【Chimelab 1周年記念】初の3人コラボ配信が開催決定！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        おかげさまでChimelabは設立1周年を迎えます！<br>
+                                        これを記念して、所属ライバーの<strong>星々来びび</strong>、<strong>鮭延ヤヲ</strong>、<strong>白鼬レム</strong>による初のコラボ配信を開催いたします！<br><br>
+                                        配信内では、これまでの活動を振り返る雑談トークをはじめ、皆様から募集したマシュマロ（質問・お便り）を読み上げるコーナーなど、様々な特別企画をお届け予定です。お楽しみに！
+                                    </p>
+
+                                    <div class="news-detail-info"
+                                        style="margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border-left: 4px solid #ff6b8b;">
+                                        <h4 style="margin-top: 0; margin-bottom: 10px; color: #ff6b8b;"><i
+                                                class="fas fa-info-circle"></i> 配信詳細</h4>
+                                        <ul style="list-style: none; padding-left: 0; margin: 0; line-height: 1.8;">
+                                            <li><strong>■ 日時：</strong>2026年6月2日(火) 21:00〜24:00</li>
+                                            <li><strong>■ 配信場所：</strong>IRIAM</li>
+                                            <li><strong>■ 主な企画：</strong>
+                                                <ul style="padding-left: 20px; list-style-type: disc;">
+                                                    <li>1周年記念雑談フリートーク</li>
+                                                    <li>マシュマロ（質問・メッセージ）紹介コーナー</li>
+                                                    <li>その他、特別ミニ企画も実施予定！</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                        <a href="https://web.iriam.app/s/user/WjbLniO5X5?uuid=52f26a4d"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fas fa-broadcast-tower"></i> 当日の配信はこちら（鮭延ヤヲの枠）
+                                        </a>
+                                        <a href="https://x.com/chimelab_/status/2059969436648603780"
+                                            class="button button-secondary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fab fa-twitter"></i> マシュマロ（お便り）はこちらから！
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2026年5月 -->
+                    <div class="news-month-group">
+                        <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2026年5月</h2>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.05.25</time>
+                                <span class="news-tag news-tag-event">ハーフアニバーサリー</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    ノエル・ミュージックがハーフアニバーサリーイベント条件達成！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    ノエル・ミュージックがハーフアニバーサリーイベントで必要条件を達成しました！<br>
+                                    日々の配信に足を運んでくださった皆様、スターやコメントで盛り上げてくださった皆様、本当にありがとうございました。<br><br>
+                                    今回の達成は、ノエル・ミュージック本人の積み重ねと、リスナーの皆様のあたたかい応援が重なって形になったものです。Chimelabとしても、この節目を一緒に迎えられたことをとても嬉しく思っています。<br><br>
+                                    ハーフアニバーサリーを越えて、これからの配信でも音楽・トーク・企画を通してさらに楽しい時間をお届けしていきます。引き続きノエル・ミュージックへの応援をよろしくお願いいたします！
+                                </p>
+                                <div style="margin-top: 15px;">
+                                    <p style="margin-bottom: 8px; font-weight: bold;">ノエル・ミュージックのXはこちらから！</p>
+                                    <a href="https://x.com/noel_chimelab" class="button button-primary button-sm"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-twitter"></i> ノエル・ミュージック
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.05.24</time>
+                                <span class="news-tag news-tag-event">Live2Dお披露目！</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <img src="img/bibi-live2d.jpg" alt="星々来びび Live2Dモデルお披露目配信"
+                                        class="news-outfit-img news-outfit-img--banner">
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        星々来びびのLive2Dモデルお披露目配信が決定！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        ついに実装‼️<br>
+                                        星々来びびのLive2Dモデルお披露目配信日が決定いたしました✨<br><br>
+                                        癒しのイッカククジラ、ついに動く…！<br>
+                                        モデルは事務所（Chimelab）が提供いたします。全人類必見の配信をぜひお見逃しなく！<br><br>
+                                        <strong>【配信日時】</strong><br>
+                                        6月6日(土) 21:00〜 (IRIAMにて)
+                                    </p>
+                                    <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                        <a href="https://web.iriam.app/s/user/qTNrEcfTgJ?uuid=aa19a3dc"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fas fa-broadcast-tower"></i> 星々来びびのIRIAMはこちら！
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.05.12</time>
+                                <span class="news-tag news-tag-event">Live2Dお披露目！</span>
+                                <span class="news-tag news-tag-skins">新衣装公開！</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <img src="img/Live2Dnoe.jpg" alt="ノエル・ミュージック Live2Dモデルお披露目&新ビジュアル配信"
+                                        class="news-outfit-img news-outfit-img--banner">
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        ノエル・ミュージックがLive2Dに！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        ノエル・ミュージックがLive2Dになりました！なんと新衣装も同時公開！<br>
+                                        表情や仕草の魅力がより豊かに伝わるLive2Dモデルに加えて、新しいビジュアルもお披露目されます。これまで応援してくださった皆様にとっても、初めてノエルを知る方にとっても、見どころたっぷりの配信です。<br><br>
+                                        お披露目は5月17日22:00から。いつもの雰囲気はそのままに、動きのある姿でお届けする新しいノエル・ミュージックをぜひご覧ください。<br><br>
+                                        当日はモデルの細かな表情や新衣装のポイントにも注目です。最新情報はChimelab公式Xでもお知らせしていきます。
+                                    </p>
+                                    <div style="margin-top: 15px;">
+                                        <a href="https://x.com/chimelab_/status/2050818806193480011"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fab fa-twitter"></i>詳細はこちらから！
+                                        </a>
+                                    </div>
+                                </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.05.07</time>
+                                <span class="news-tag news-tag-event">Live2Dイベント</span>
+                            </div>
+                            <div class="news-outfit-layout news-outfit-layout--banner">
+                                <div class="news-outfit-img-wrap news-outfit-img-wrap--banner">
+                                    <img src="img/Live2Dyao..jpg" alt="鮭延ヤヲ Live2Dイベント達成"
+                                        class="news-outfit-img news-outfit-img--banner">
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">
+                                        鮭延ヤヲがLive2Dイベントを達成！
+                                    </h3>
+                                    <p class="news-page-item-summary">
+                                        鮭延ヤヲがLive2Dイベントを達成しました！<br>
+                                        沢山の応援、ありがとうございました！<br><br>
+                                        イベント期間中、配信に来てくださった皆様、応援で背中を押してくださった皆様のおかげで、Live2D化に向けた大きな一歩を踏み出すことができました。<br><br>
+                                        今後は公開に向けて準備を進めてまいります。公開は7月以降を予定しており、詳細が決まり次第、Chimelab公式Xなどで順次お知らせします。<br><br>
+                                        鮭延ヤヲらしい表情や動きがどのように配信で広がっていくのか、ぜひ楽しみにお待ちください。引き続き応援よろしくお願いいたします！
+                                    </p>
+                                    <div style="margin-top: 15px;">
+                                        <a href="https://x.com/chimelab_/status/2051698536690163823"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fab fa-twitter"></i>詳細はこちらから！
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2026年4月 -->
+                    <div class="news-month-group">
+                        <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2026年4月</h2>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.04.27</time>
+                                <span class="news-tag news-tag-event">トップバナーイベント</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    白鼬れむがトップバナーイベントで７２位入賞！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    白鼬れむがトップバナーイベントで７２位入賞しました！
+                                    応援していただいた皆様、ありがとうございました！
+                                </p>
+                                <div style="margin-top: 15px;">
+                                    <p style="margin-bottom: 8px; font-weight: bold;">白鼬れむのXはこちらから！</p>
+                                    <a href="https://x.com/hakuita_rem" class="button button-primary button-sm"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-twitter"></i> 白鼬れむ
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
 
                     <!-- 2026年3月 -->
                     <div class="news-month-group">
                         <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2026年3月</h2>
+
+                        <article class="news-page-item news-page-item--outfit" data-category="skins">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.25</time>
+                                <span class="news-tag news-tag-skins">✨ 新衣装</span>
+                            </div>
+                            <div class="news-outfit-layout">
+                                <div class="news-outfit-img-wrap">
+                                    <img src="img/sanobe_yawoNEW.png" alt="鮭延ヤヲ チャイナ衣装" class="news-outfit-img">
+                                    <div class="news-outfit-badge">NEW</div>
+                                </div>
+                                <div class="news-page-item-body">
+                                    <h3 class="news-page-item-title">鮭延ヤヲ が新衣装を公開！</h3>
+                                    <p class="news-page-item-summary">
+                                        所属ライバーの鮭延ヤヲが新衣装「チャイナ衣装」を公開しました！<br>
+                                        応援してくださった皆様、ありがとうございました！
+                                    </p>
+                                    <div class="news-outfit-links">
+                                        <a href="https://x.com/sanobe_yao/status/2036474705201471556"
+                                            class="button button-primary button-sm" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <p style="margin-bottom: 8px; font-weight: bold;">新衣装の詳細はこちらから！</p>
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.17</time>
+                                <span class="news-tag news-tag-event">ハーフアニバーサリー</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    星々来びび がハーフアニバーサリーイベント条件達成！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    星々来びびがハーフアニバーサリーイベントで必要条件を達成しました！
+                                    応援していただいた皆様、ありがとうございました！
+                                </p>
+                                <div style="margin-top: 15px;">
+                                    <p style="margin-bottom: 8px; font-weight: bold;">星々来びびのXはこちらから！</p>
+                                    <a href="https://x.com/Bibi_Sesera_" class="button button-primary button-sm"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-twitter"></i> 星々来びび
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="rank">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.14</time>
+                                <span class="news-tag news-tag-rank">ランク到達</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    ノエル・ミュージック がAランクに到達！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    所属ライバーのノエル・ミュージックがIRIAMにてA帯（Aランク）に到達しました！A帯は上位15%のライバーのみが到達できる狭き門です。
+                                    日頃から応援してくださる皆様、本当にありがとうございます！
+                                </p>
+                                <div style="margin-top: 15px;">
+                                    <p style="margin-bottom: 8px; font-weight: bold;">ノエル・ミュージックのXはこちらから！</p>
+                                    <a href="https://x.com/noel_chimelab" class="button button-primary button-sm"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-twitter"></i> ノエル・ミュージック
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-page-item" data-category="event">
+                            <div class="news-page-item-header">
+                                <time class="news-page-date">2026.03.17</time>
+                                <span class="news-tag news-tag-event">3Monthイベント</span>
+                            </div>
+                            <div class="news-page-item-body">
+                                <h3 class="news-page-item-title">
+                                    鮭延ヤヲ が3Monthイベントで4位入賞！
+                                </h3>
+                                <p class="news-page-item-summary">
+                                    所属ライバーの鮭延ヤヲがIRIAMにて3Monthイベントで4位入賞しました！
+                                    応援してくださった皆様、ありがとうございました！
+                                </p>
+                                <div style="margin-top: 15px;">
+                                    <p style="margin-bottom: 8px; font-weight: bold;">鮭延ヤヲのXはこちらから！</p>
+                                    <a href="https://x.com/sanobe_yao" class="button button-primary button-sm"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-twitter"></i> 鮭延ヤヲ
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+
+
 
                         <article class="news-page-item" data-category="debut">
                             <div class="news-page-item-header">
@@ -78,9 +542,13 @@
                                     新メンバー「白鼬れむ」がChimelabに所属！
                                 </h3>
                                 <p class="news-page-item-summary">
-                                    新たなキメラが研究所に加わります。オコジョのキメラ「白鼬れむ」のデビュー配信は3月20日12時より！お楽しみに！</p>
+                                    新たなキメラが研究所に加わります。オコジョのキメラ「白鼬れむ」のデビュー配信は3月20日12時より！お楽しみに！
+                                </p>
+
                             </div>
                         </article>
+
+
 
                         <article class="news-page-item" data-category="info">
                             <div class="news-page-item-header">
@@ -103,7 +571,7 @@
                             </div>
                             <div class="news-page-item-body">
                                 <h3 class="news-page-item-title">
-                                    星々来びび・ノエルミュージックがLive2Dイベント達成！
+                                    星々来びび・ノエルミュージック がLive2Dイベント達成！
                                 </h3>
                                 <p class="news-page-item-summary">
                                     星々来びびとノエル・ミュージックがLive2Dイベントを無事達成しました。応援いただいた皆様、ありがとうございました！</p>
@@ -111,32 +579,14 @@
                         </article>
                     </div>
 
-                    <!-- 2025年 -->
-                    <div class="news-month-group">
-                        <h2 class="news-month-label"><i class="fas fa-calendar-alt"></i> 2025年</h2>
-
-                        <article class="news-page-item" data-category="debut">
-                            <div class="news-page-item-header">
-                                <time class="news-page-date">2025.06</time>
-                                <span class="news-tag news-tag-debut">新メンバー</span>
-                            </div>
-                            <div class="news-page-item-body">
-                                <h3 class="news-page-item-title">
-                                    Chimelab（キメラボ）設立！初期メンバー活動開始
-                                </h3>
-                                <p class="news-page-item-summary">
-                                    IRIAMで活動するVライバー事務所「Chimelab（キメラボ）」が設立されました。個性豊かなキメラたちの活動にご期待ください。</p>
-                            </div>
-                        </article>
-                    </div>
-
                 </div>
+            </div>
 
-                <!-- トップに戻る -->
-                <div class="news-page-back">
-                    <a href="index.html" class="button button-secondary button-sm"><i class="fas fa-arrow-left"></i>
-                        トップページへ戻る</a>
-                </div>
+            <!-- トップに戻る -->
+            <div class="news-page-back">
+                <a href="index.html" class="button button-secondary button-sm"><i class="fas fa-arrow-left"></i>
+                    トップページへ戻る</a>
+            </div>
             </div>
         </section>
     </main>
@@ -218,6 +668,21 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // === 画像ダウンロード防止 ===
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        // === HTMLソース・保存の簡易防止（キーボードショートカット無効化） ===
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12') { e.preventDefault(); return false; }
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'u' || e.key === 'U')) { e.preventDefault(); return false; }
+            if ((e.ctrlKey || e.metaKey) && (e.shiftKey || e.altKey) && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) { e.preventDefault(); return false; }
         });
     </script>
 </body>

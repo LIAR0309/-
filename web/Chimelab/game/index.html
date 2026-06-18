@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Jump Runner - 8bit横スクロールゲーム</title>
+    <meta name="description" content="Chrome恐竜ゲーム風の8bit横スクロールジャンプゲーム。障害物を避けてハイスコアを目指そう！">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK (compat版) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+    <div id="game-wrapper">
+        <!-- Canvas -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- ===== スタート画面 ===== -->
+        <div id="start-screen" class="overlay">
+            <h1 class="game-title">CHIMELAB<br>JUMP RUNNER</h1>
+            <p class="game-subtitle">8-BIT ENDLESS RUN</p>
+            <div class="menu-buttons">
+                <button id="btn-start" class="pixel-btn">START</button>
+                <button id="btn-ranking" class="pixel-btn">RANKING</button>
+                <button id="btn-start-home" class="pixel-btn secondary">HOME</button>
+            </div>
+            <p class="hint-text">SPACE / TAP TO JUMP</p>
+        </div>
+
+        <!-- ===== ゲームオーバー画面 ===== -->
+        <div id="gameover-screen" class="overlay hidden">
+            <h2 class="gameover-title">GAME OVER</h2>
+            <p class="score-label">YOUR SCORE</p>
+            <p id="final-score" class="score-value">0</p>
+            <p class="score-label">RANKING HIGH SCORE</p>
+            <p id="high-score" class="score-value">0</p>
+
+            <!-- ランキング登録フォーム -->
+            <div id="ranking-form" class="ranking-form">
+                <p class="ranking-ask">ランキング登録しますか？</p>
+                <input type="text" id="player-name" class="pixel-input" placeholder="NAME" maxlength="10">
+                <div class="form-buttons">
+                    <button id="btn-register" class="pixel-btn small">登録</button>
+                    <button id="btn-skip" class="pixel-btn small secondary">スキップ</button>
+                </div>
+            </div>
+
+            <div id="gameover-buttons" class="menu-buttons hidden">
+                <button id="btn-restart" class="pixel-btn">RESTART</button>
+                <button id="btn-title" class="pixel-btn secondary">TITLE</button>
+            </div>
+        </div>
+
+        <!-- ===== ランキング画面 ===== -->
+        <div id="ranking-screen" class="overlay hidden">
+            <h2 class="ranking-title">RANKING</h2>
+            <div id="ranking-list" class="ranking-list"></div>
+            <button id="btn-back" class="pixel-btn">BACK</button>
+        </div>
+
+        <!-- ===== スコア表示（ゲーム中） ===== -->
+        <div id="hud" class="hud hidden">
+            <span id="current-score">Score: 0</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

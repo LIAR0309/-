@@ -1,0 +1,16 @@
+{
+  "audio_input": "",
+  "output_srt": "",
+  "python_executable": "C:\\Users\\imspr\\Documents\\Mega font pack\\.venv\\Scripts\\python.exe",
+  "model": "small",
+  "language": "ja",
+  "task": "transcribe",
+  "device": "cpu",
+  "compute_type": "int8",
+  "beam_size": 5,
+  "vad_filter": true,
+  "condition_on_previous_text": true,
+  "initial_prompt": "日本語の動画です。句読点を自然に付けてください。",
+  "max_line_width": 24,
+  "max_line_count": 2
+}

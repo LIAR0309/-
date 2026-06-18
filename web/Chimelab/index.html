@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chimelab（キメラボ）- IRIAM Vライバー事務所</title>
-    <meta name="description" content="あなたの魅力の研究所「Chimelab（キメラボ）」は、IRIAMで活動するVライバー事務所です。未経験歓迎、充実サポートで新しい自分を見つけよう。">
+    <title>【公式】IRIAM Vライバー事務所 Chimelab（キメラボ） | オーディション・配信者募集中</title>
+    <meta name="description"
+        content="Chimelab（キメラボ）は、IRIAM（イリアム）で活動するVライバー事務所です。所属ライバー情報や最新ニュース、Vライバーオーディションの応募受付はこちら。未経験歓迎・クリエイターによる充実サポートであなたの配信デビューを応援します。">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&display=swap"
@@ -19,13 +20,15 @@
     <meta name="google-site-verification" content="7jSCRylg7jg-HsqSyhu9xbNjSfs2R9Qez7wxUREVrRk" />
 </head>
 
-<body>
+<body class="home-page is-intro">
 
+
+    <div class="scroll-progress" id="scroll-progress"></div>
     <!-- ========== ヘッダー ========== -->
     <header class="header">
         <div class="container header-content">
             <a href="#top" class="logo">
-                <span class="logo-text">ChimeLab</span>
+                <span class="logo-text">Chimelab</span>
                 <img src="img/chimelab-logo.jpg" alt="Chimelab Logo" class="logo-img">
             </a>
 
@@ -37,9 +40,10 @@
 
             <nav class="nav" id="nav">
                 <ul>
-                    <li><a href="#about">キメラボとは</a></li>
-                    <li><a href="#livers">所属ライバー</a></li>
+                    <li><a href="#top">ホーム</a></li>
                     <li><a href="#news">ニュース</a></li>
+                    <li><a href="#livers">所属ライバー</a></li>
+                    <li><a href="#about">キメラボとは</a></li>
                     <li><a href="#support">サポート</a></li>
                     <li><a href="#apply">応募する</a></li>
                 </ul>
@@ -52,15 +56,25 @@
         <section class="hero" id="top">
             <!-- 視覚演出: 背景に動画やパーティクルを想定したコンテナ -->
             <div class="hero-bg-effect"></div>
+            <div class="hero-particles" id="hero-particles"></div>
             <div class="hero-content">
                 <div class="floating">
-                    <h1>「何者かになりたい」<br>そんな欲望、叶えてみませんか？</h1>
-                    <p>あなたの魅力の研究所「Chimelab（キメラボ）」で<br class="sp-only">新しい自分を見つけよう</p>
+                    <h1>
+                        <span class="intro-line1"><span class="no-wrap">「何者かに</span><span
+                                class="no-wrap">なりたい」</span></span><br>
+                        <span class="intro-line2">そんな欲望</span><br class="sp-only">
+                        <span class="intro-line3">叶えてみませんか？</span>
+                    </h1>
+                    <p>あなたの魅力の研究所<span class="no-wrap">「Chimelab（キメラボ）」</span>で<br class="sp-only">新しい自分を見つけよう</p>
                 </div>
                 <div class="hero-actions">
                     <a href="#livers" class="button button-primary"><i class="fas fa-users"></i> ライバーを見る</a>
                     <a href="#apply" class="button button-secondary"><i class="fas fa-paper-plane"></i> 応募する</a>
                 </div>
+            </div>
+            <div class="scroll-indicator" id="scroll-indicator">
+                <span>Scroll</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
         </section>
 
@@ -69,22 +83,108 @@
             <div class="container">
                 <h2>NEWS / 最新情報</h2>
                 <p class="section-desc">研究所からの最新のお知らせやイベント情報</p>
-                <div class="news-list">
-                    <article class="news-item">
-                        <div class="news-date">2026.03.20</div>
-                        <div class="news-tag news-tag-debut">新メンバー</div>
-                        <h3 class="news-title"><a href="news.html">新メンバー「白鼬れむ」がChimelabに所属！</a></h3>
-                    </article>
-                    <article class="news-item">
-                        <div class="news-date">2026.03.03</div>
-                        <div class="news-tag news-tag-event">Live2Dイベント</div>
-                        <h3 class="news-title"><a href="news.html">星々来びび・ノエルミュージックがLive2Dイベント達成！</a></h3>
-                    </article>
-                    <article class="news-item">
-                        <div class="news-date">2026.03.10</div>
-                        <div class="news-tag news-tag-info">お知らせ</div>
-                        <h3 class="news-title"><a href="news.html">Chimelabのホームページが公開されました！</a></h3>
-                    </article>
+                <div class="news-slider-container">
+                    <div class="news-slider">
+                        <div class="news-slider-track" id="news-slider-track">
+                            <!-- ノエル・ミュージック Live2D公開 -->
+                            <div class="news-slider-slide">
+                                <a href="news.html" class="news-card-item news-card-item--stacked"
+                                    data-category="event">
+                                    <div class="news-card-video-top">
+                                        <video src="video/noel_homepage.mov" autoplay loop muted playsinline
+                                            class="news-card-video-top-media"></video>
+                                    </div>
+                                    <div class="news-card-text-area" style="padding-top: 48px;">
+                                        <div class="news-card-badge-wrap">
+                                            <span class="news-card-tag news-tag-event">✨ Live2D公開</span>
+                                        </div>
+                                        <time class="news-card-date"><i class="far fa-calendar-alt"></i>
+                                            2026.06.10</time>
+                                        <h3 class="news-card-title">【Live2D公開】オッドアイが輝く白鳥「ノエル・ミュージック」のLive2D公開！</h3>
+                                        <p class="news-card-description">
+                                            左右で異なる美しい瞳（オッドアイ）の動きや、優雅な仕草がなめらかに表現されたLive2Dモデルがついに公開！紹介映像で動く姿をチェック！</p>
+                                        <span class="news-card-more">詳しく見る <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- 星々来びび Live2D公開 -->
+                            <div class="news-slider-slide">
+                                <a href="news.html" class="news-card-item news-card-item--stacked"
+                                    data-category="event">
+                                    <div class="news-card-video-top">
+                                        <video src="video/bibi_homepage.mov" autoplay loop muted playsinline
+                                            class="news-card-video-top-media"></video>
+                                    </div>
+                                    <div class="news-card-text-area" style="padding-top: 48px;">
+                                        <div class="news-card-badge-wrap">
+                                            <span class="news-card-tag news-tag-event">✨ Live2D公開</span>
+                                        </div>
+                                        <time class="news-card-date"><i class="far fa-calendar-alt"></i>
+                                            2026.06.10</time>
+                                        <h3 class="news-card-title">【Live2D公開】星を愛するイッカククジラ「星々来びび」のLive2D公開！</h3>
+                                        <p class="news-card-description">
+                                            額の愛らしいツノや、かまちょで陽気な彼女の表情豊かな動きが完璧に再現されたLive2Dがついに実装！さらに可愛くなった姿をご覧ください！</p>
+                                        <span class="news-card-more">詳しく見る <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- 1周年記念グッズ -->
+                            <div class="news-slider-slide">
+                                <a href="news.html" class="news-card-item news-card-item--stacked"
+                                    data-category="event">
+                                    <div class="news-card-img-top">
+                                        <img src="img/keyholder_chimelab.jpg" alt="1周年記念グッズ キメラボ1期生つながるドット絵アクキー">
+                                    </div>
+                                    <div class="news-card-text-area" style="padding-top: 86px;">
+                                        <div class="news-card-badge-wrap">
+                                            <span class="news-card-tag news-tag-event">1周年記念</span>
+                                            <span class="news-card-tag news-tag-goods">グッズ</span>
+                                        </div>
+                                        <time class="news-card-date"><i class="far fa-calendar-alt"></i>
+                                            2026.06.10</time>
+                                        <h3 class="news-card-title">【Chimelab 1周年記念】1期生つながるドット絵アクキー受注開始！</h3>
+                                        <p class="news-card-description">
+                                            つなげて飾れる可愛いドット絵アクリルキーホルダーがBOOTHに登場！期間限定の予約販売となりますのでお見逃しなく！</p>
+                                        <span class="news-card-more">詳しく見る <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- 百彩イト 再デビュー準備中 -->
+                            <div class="news-slider-slide">
+                                <a href="news.html" class="news-card-item news-card-item--stacked"
+                                    data-category="info">
+                                    <div class="news-card-video-top">
+                                        <img src="img/ito_momoiro.png" alt="百彩イト 新モデル準備中" class="news-card-video-top-media">
+                                    </div>
+                                    <div class="news-card-text-area" style="padding-top: 48px;">
+                                        <div class="news-card-badge-wrap">
+                                            <span class="news-card-tag news-tag-info">✨ お知らせ</span>
+                                        </div>
+                                        <time class="news-card-date"><i class="far fa-calendar-alt"></i>
+                                            2026.06.17</time>
+                                        <h3 class="news-card-title">【再デビュー】百彩イトがIRIAM再デビュー準備中！</h3>
+                                        <p class="news-card-description">
+                                            百彩イトがIRIAMでの再デビューに向けて準備中です！今後モデルが変わって、さらに可愛くなった姿をお披露目する予定ですので、ぜひご期待ください！</p>
+                                        <span class="news-card-more">詳しく見る <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 左右ナビゲーション矢印 -->
+                    <button class="news-slider-arrow news-slider-arrow-prev" id="news-slider-prev" aria-label="前へ">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="news-slider-arrow news-slider-arrow-next" id="news-slider-next" aria-label="次へ">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- ドットインジケーター -->
+                    <div class="news-slider-dots" id="news-slider-dots"></div>
                 </div>
                 <div class="more-link">
                     <a href="news.html" class="button button-secondary button-sm">ニュース一覧へ</a>
@@ -122,7 +222,6 @@
                                     <h2>百彩 イト</h2>
                                     <p class="kana">momoiro ito</p>
                                     <p class="tagline">🐇 百の彩を持つウサギのキメラ</p>
-                                    <p class="infomation">現在休止中</p>
                                 </div>
                             </div>
                             <div class="liver-body">
@@ -148,7 +247,7 @@
                                         <span class="tag">FA：#イト絵日記</span>
                                     </div>
                                     <div class="liver-links">
-                                        <a href="https://x.com/ito_momoiro" target="_blank" class="liver-link"><i
+                                        <a href="https://x.com/ito_chimelab" target="_blank" class="liver-link"><i
                                                 class="fab fa-twitter"></i> X</a>
                                         <a href="https://www.twitch.tv/ito_momoiro" target="_blank"
                                             class="liver-link"><i class="fab fa-twitch"></i> Twitch</a>
@@ -178,9 +277,9 @@
                                 <div class="liver-section">
                                     <div class="liver-section-title"><i class="fas fa-user"></i> プロフィール</div>
                                     <ul>
-                                        <li><strong>身長</strong> 149.8cm</li>
+                                        <li><strong>身長</strong> 150cm</li>
                                         <li><strong>誕生日</strong> 4月22日（人間の体を得た日）</li>
-                                        <li><strong>特徴</strong> 額のツノ（牙）、寒さに強い</li>
+                                        <li><strong>特徴</strong> 額 of ツノ（牙）、寒さに強い</li>
                                     </ul>
                                 </div>
                                 <div class="liver-section">
@@ -262,11 +361,11 @@
                             <div class="liver-header">
                                 <div class="outfit-image-wrapper">
                                     <img src="img/sanobe_yawo.png" alt="鮭延 ヤヲ" data-outfit-old="img/sanobe_yawo.png"
-                                        data-outfit-new="img/">
+                                        data-outfit-new="img/sanobe_yawoNew.png">
                                     <div class="outfit-toggle">
                                         <button class="outfit-btn active" data-outfit="old">通常衣装</button>
-                                        <button class="outfit-btn" data-outfit="new" disabled
-                                            style="opacity: 0.5; cursor: not-allowed;">Coming Soon</button>
+                                        <button class="outfit-btn" data-outfit="new" enabled
+                                            style="opacity: 1; cursor: pointer;">チャイナ衣装</button>
                                     </div>
                                 </div>
                                 <div>
@@ -311,7 +410,7 @@
                         <article class="liver-detail-card liver-popup-card" id="liver-rem">
                             <div class="liver-header">
                                 <div class="liver-image-wrapper">
-                                    <img src="img/rem-hakuita.png" alt="白鼬 レム">
+                                    <img src="img/rem_hakuita.png" alt="白鼬 レム">
                                 </div>
                                 <div>
                                     <h2>白鼬 レム</h2>
@@ -357,35 +456,35 @@
                     <a href="#liver-ito" class="liver-card">
                         <img src="img/ito_momoiro1.png" alt="百彩 イト">
                         <div class="liver-info">
-                            <h3>百彩 イト</h3>
+                            <h3><span class="no-wrap">百彩 イト</span></h3>
                             <p>百の彩を持つウサギのキメラ。</p>
                         </div>
                     </a>
                     <a href="#liver-bibi" class="liver-card">
                         <img src="img/Bibi_sesera1.png" alt="星々来 びび">
                         <div class="liver-info">
-                            <h3>星々来 びび</h3>
+                            <h3><span class="no-wrap">星々来 びび</span></h3>
                             <p>星を愛するイッカククジラのキメラ。</p>
                         </div>
                     </a>
                     <a href="#liver-noel" class="liver-card">
                         <img src="img/noel_musick1.png" alt="ノエル・ミュージック">
                         <div class="liver-info">
-                            <h3>ノエル・ミュージック</h3>
+                            <h3><span class="no-wrap">ノエル・ミュージック</span></h3>
                             <p>美しい白鳥のキメラ。</p>
                         </div>
                     </a>
                     <a href="#liver-yawo" class="liver-card">
                         <img src="img/sanobe_yawo1.png" alt="鮭延 ヤヲ">
                         <div class="liver-info">
-                            <h3>鮭延 ヤヲ</h3>
+                            <h3><span class="no-wrap">鮭延 ヤヲ</span></h3>
                             <p>200年生きた漫画家の猫又</p>
                         </div>
                     </a>
                     <a href="#liver-rem" class="liver-card">
                         <img src="img/rem-hakuita1.png" alt="白鼬 レム">
                         <div class="liver-info">
-                            <h3>白鼬 レム</h3>
+                            <h3><span class="no-wrap">白鼬 レム</span></h3>
                             <p>迷子のオコジョのキメラ。</p>
                         </div>
                     </a>
@@ -575,7 +674,7 @@
                     <div class="apply-notes">
                         <p><i class="fas fa-info-circle"></i> 応募に関する注意事項</p>
                         <ul>
-                            <li>16歳以下の方の応募は受け付けできません</li>
+                            <li>15歳以下の方の応募は受け付けできません</li>
                             <li>すでにIRIAMで個人配信活動をしている方はそのまま加入できません</li>
                             <li>他事務所に所属している方はそのまま加入できません</li>
                         </ul>
@@ -600,7 +699,7 @@
     <!-- ========== フッター ========== -->
     <footer class="footer">
         <div class="container">
-            <div class="logo">Chimelab</div>
+            <div class="logo" id="easter-egg-trigger" style="user-select: none;">Chimelab</div>
             <div class="footer-bottom">
                 &copy; 2025-2026 Chimelab（キメラボ）
             </div>
@@ -608,229 +707,7 @@
     </footer>
 
     <!-- ========== JavaScript ========== -->
-    <script>
-        // ハンバーガーメニュー
-        const menuToggle = document.getElementById("menu-toggle");
-        const nav = document.getElementById("nav");
-
-        menuToggle.addEventListener("click", () => {
-            menuToggle.classList.toggle("active");
-            nav.classList.toggle("active");
-        });
-
-        // ナビリンククリックでメニューを閉じる
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove("active");
-                nav.classList.remove("active");
-            });
-        });
-
-        // スムーズスクロール
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const href = this.getAttribute('href');
-
-                const target = document.querySelector(href);
-                if (target) {
-                    const headerHeight = 60;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // === ライバーポップアップ表示ロジック ===
-        const popupArea = document.getElementById('liver-popup-area');
-        const popupCloseBtn = document.getElementById('liver-popup-close');
-        const popupPrevBtn = document.getElementById('liver-popup-prev');
-        const popupNextBtn = document.getElementById('liver-popup-next');
-        const allPopupCards = document.querySelectorAll('.liver-popup-card');
-        const liverCards = document.querySelectorAll('.liver-grid .liver-card');
-
-        // ライバーのIDリストを配列化
-        const liverIdList = Array.from(allPopupCards).map(card => card.id);
-        let currentLiverIndex = -1;
-
-        function showLiverPopup(liverId) {
-            currentLiverIndex = liverIdList.indexOf(liverId);
-            if (currentLiverIndex === -1) return;
-
-            // 全カードを一旦非表示（アニメーションリセットのため）
-            allPopupCards.forEach(card => {
-                card.style.display = 'none';
-                card.classList.remove('liver-popup-animate');
-                card.classList.remove('liver-popup-closing');
-            });
-
-            // 対象カードだけ表示
-            const targetCard = document.getElementById(liverId);
-            if (targetCard) {
-                popupArea.style.display = 'block';
-                targetCard.style.display = 'flex';
-                // アニメーションを発火
-                requestAnimationFrame(() => {
-                    targetCard.classList.add('liver-popup-animate');
-                });
-                // スクロール
-                setTimeout(() => {
-                    const headerHeight = 60;
-                    const pos = popupArea.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    window.scrollTo({ top: pos, behavior: 'smooth' });
-                }, 50);
-            }
-            // クリックしたカードをハイライト
-            liverCards.forEach(card => card.classList.remove('liver-card-active'));
-            const clickedCard = document.querySelector(`.liver-card[href="#${liverId}"]`);
-            if (clickedCard) clickedCard.classList.add('liver-card-active');
-        }
-
-        function navigateLiver(direction) {
-            if (currentLiverIndex === -1) return;
-
-            // 次・前のインデックス計算（ループ処理）
-            let newIndex = currentLiverIndex + direction;
-            if (newIndex < 0) newIndex = liverIdList.length - 1;
-            if (newIndex >= liverIdList.length) newIndex = 0;
-
-            const newLiverId = liverIdList[newIndex];
-
-            // 切り替え時のアニメーション（一旦閉じる演出を挟むか、直接切り替えるか）
-            // ここでは直接切り替えてアニメーションを再適用する
-            showLiverPopup(newLiverId);
-        }
-
-        function closeLiverPopup() {
-            const visibleCard = document.querySelector('.liver-popup-card.liver-popup-animate');
-            if (visibleCard) {
-                visibleCard.classList.remove('liver-popup-animate');
-                visibleCard.classList.add('liver-popup-closing');
-                setTimeout(() => {
-                    visibleCard.classList.remove('liver-popup-closing');
-                    visibleCard.style.display = 'none';
-                    popupArea.style.display = 'none';
-                }, 350);
-            } else {
-                popupArea.style.display = 'none';
-            }
-            currentLiverIndex = -1;
-            liverCards.forEach(card => card.classList.remove('liver-card-active'));
-        }
-
-        // カードクリック
-        liverCards.forEach(card => {
-            card.addEventListener('click', function (e) {
-                e.preventDefault();
-                const liverId = this.getAttribute('href').substring(1);
-                showLiverPopup(liverId);
-            });
-        });
-
-        // 閉じるボタン
-        popupCloseBtn.addEventListener('click', closeLiverPopup);
-
-        // 前後ボタン
-        popupPrevBtn.addEventListener('click', () => navigateLiver(-1));
-        popupNextBtn.addEventListener('click', () => navigateLiver(1));
-
-        // --- スワイプナビゲーションの実装 ---
-        let touchStartX = 0;
-        let touchEndX = 0;
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        // ポップアップエリア内でのタッチ開始
-        popupArea.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        // ポップアップエリア内でのタッチ終了
-        popupArea.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const diffX = touchEndX - touchStartX;
-            const diffY = touchEndY - touchStartY;
-
-            // 横方向の移動距離が縦方向より大きく、かつ一定距離（50px）以上の場合のみ発火
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    // 右スワイプ -> 前のメンバー
-                    navigateLiver(-1);
-                } else {
-                    // 左スワイプ -> 次のメンバー
-                    navigateLiver(1);
-                }
-            }
-        }
-
-        // スクロール時のヘッダー変化
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // フッターロゴ3クリック隠しコマンド
-        let footerLogoClickCount = 0;
-        let footerLogoClickTimer;
-        const footerLogo = document.querySelector('.footer .logo');
-        if (footerLogo) {
-            footerLogo.style.cursor = 'pointer';
-            footerLogo.addEventListener('click', () => {
-                footerLogoClickCount++;
-                clearTimeout(footerLogoClickTimer);
-                if (footerLogoClickCount === 3) {
-                    window.location.href = '/admin';
-                    footerLogoClickCount = 0;
-                } else {
-                    footerLogoClickTimer = setTimeout(() => {
-                        footerLogoClickCount = 0;
-                    }, 500);
-                }
-            });
-        }
-
-        // === 衣装切り替えロジック ===
-        document.querySelectorAll('.outfit-toggle').forEach(toggle => {
-            toggle.querySelectorAll('.outfit-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const wrapper = this.closest('.outfit-image-wrapper');
-                    const img = wrapper.querySelector('img');
-                    const outfitType = this.dataset.outfit;
-                    const newSrc = outfitType === 'new' ? img.dataset.outfitNew : img.dataset.outfitOld;
-
-                    // 既に同じ衣装なら何もしない
-                    if (img.src.endsWith(newSrc)) return;
-
-                    // ボタンのactive状態を切り替え
-                    toggle.querySelectorAll('.outfit-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // フェードアウト → 画像切り替え → フェードイン
-                    img.classList.add('outfit-switching');
-                    setTimeout(() => {
-                        img.src = newSrc;
-                        img.onload = () => {
-                            img.classList.remove('outfit-switching');
-                        };
-                    }, 300);
-                });
-            });
-        });
-
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

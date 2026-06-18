@@ -1,0 +1,364 @@
+/* ========================================
+   Jump Runner - 8-bit Style CSS
+   ======================================== */
+
+/* --- リセット＆ベース --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Press Start 2P', monospace;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* --- ゲームラッパー --- */
+#game-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 4 / 3;
+    background: #fff;
+    border: 4px solid #333;
+    box-shadow:
+        0 0 0 4px #1a1a2e,
+        0 0 0 8px #333,
+        0 8px 32px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+#game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* --- オーバーレイ共通 --- */
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 10;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- スタート画面 --- */
+.game-title {
+    font-size: clamp(24px, 6vw, 48px);
+    color: #222;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 4px;
+    text-shadow:
+        3px 3px 0 #ddd,
+        -1px -1px 0 #999;
+    margin-bottom: 8px;
+    animation: title-bounce 2s ease-in-out infinite;
+}
+
+@keyframes title-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.game-subtitle {
+    font-size: clamp(6px, 1.5vw, 10px);
+    color: #888;
+    letter-spacing: 3px;
+    margin-bottom: 32px;
+}
+
+.hint-text {
+    font-size: clamp(5px, 1.2vw, 8px);
+    color: #aaa;
+    margin-top: 24px;
+    animation: blink 1.5s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- メニューボタン --- */
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pixel-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(8px, 2vw, 14px);
+    padding: 12px 32px;
+    background: #222;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s;
+    letter-spacing: 2px;
+    /* 8bitピクセルボーダー風 */
+    box-shadow:
+        inset -3px -3px 0 #000,
+        inset 3px 3px 0 #555;
+}
+
+.pixel-btn:hover {
+    transform: scale(1.05);
+    background: #444;
+}
+
+.pixel-btn:active {
+    transform: scale(0.95);
+    box-shadow:
+        inset 3px 3px 0 #000,
+        inset -3px -3px 0 #555;
+}
+
+.pixel-btn.small {
+    font-size: clamp(6px, 1.5vw, 10px);
+    padding: 8px 20px;
+}
+
+.pixel-btn.secondary {
+    background: #888;
+    box-shadow:
+        inset -3px -3px 0 #666,
+        inset 3px 3px 0 #aaa;
+}
+
+.pixel-btn.secondary:hover {
+    background: #999;
+}
+
+/* --- ゲームオーバー画面 --- */
+.gameover-title {
+    font-size: clamp(16px, 4vw, 32px);
+    color: #c0392b;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 #e74c3c44;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.score-label {
+    font-size: clamp(6px, 1.5vw, 10px);
+    color: #888;
+    margin-top: 8px;
+}
+
+.score-value {
+    font-size: clamp(14px, 3.5vw, 28px);
+    color: #222;
+    margin-bottom: 8px;
+}
+
+/* --- ランキング登録フォーム --- */
+.ranking-form {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.ranking-ask {
+    font-size: clamp(5px, 1.3vw, 9px);
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.pixel-input {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(8px, 2vw, 12px);
+    padding: 8px 12px;
+    border: 3px solid #333;
+    background: #f8f8f8;
+    color: #222;
+    text-align: center;
+    width: 200px;
+    max-width: 80%;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.pixel-input:focus {
+    border-color: #c0392b;
+    background: #fff;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* --- ランキング画面 --- */
+.ranking-title {
+    font-size: clamp(14px, 3.5vw, 28px);
+    color: #222;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 #ddd;
+}
+
+.ranking-list {
+    width: 90%;
+    max-width: 400px;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.ranking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: clamp(6px, 1.5vw, 10px);
+    color: #333;
+    border-bottom: 2px dashed #ddd;
+}
+
+.ranking-item:nth-child(1) .rank-number {
+    color: #f1c40f;
+}
+
+.ranking-item:nth-child(2) .rank-number {
+    color: #95a5a6;
+}
+
+.ranking-item:nth-child(3) .rank-number {
+    color: #e67e22;
+}
+
+.rank-number {
+    font-size: clamp(8px, 2vw, 14px);
+    min-width: 30px;
+}
+
+.rank-name {
+    flex: 1;
+    text-align: left;
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rank-score {
+    color: #c0392b;
+    white-space: nowrap;
+}
+
+.ranking-empty {
+    font-size: clamp(6px, 1.5vw, 10px);
+    color: #999;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- HUD（ゲーム中スコア） --- */
+.hud {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: clamp(8px, 2vw, 14px);
+    color: #333;
+    z-index: 5;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* --- レスポンシブ微調整 --- */
+@media (max-width: 600px) {
+    #game-wrapper {
+        border-width: 2px;
+        box-shadow:
+            0 0 0 2px #1a1a2e,
+            0 0 0 4px #333,
+            0 4px 16px rgba(0, 0, 0, 0.5);
+        
+        /* 縦長画面用のレイアウト調整 */
+        aspect-ratio: auto;
+        height: 80vh;
+        max-height: 800px;
+    }
+
+    .pixel-btn {
+        padding: 10px 24px;
+    }
+
+    .pixel-input {
+        width: 160px;
+    }
+}
+
+@media (max-height: 500px) {
+    .game-title {
+        font-size: clamp(16px, 4vw, 28px);
+        margin-bottom: 4px;
+    }
+
+    .game-subtitle {
+        margin-bottom: 16px;
+    }
+
+    .gameover-title {
+        margin-bottom: 8px;
+    }
+}
